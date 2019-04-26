@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/NicoSimplon/collegues-front.svg?branch=master)](https://travis-ci.org/NicoSimplon/collegues-front)
 
+Lien vers l'interface : [Lien](https://nicosimplon.github.io/collegues-front/)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
 
