@@ -9,7 +9,5 @@ import { Collegue } from './models/Collegue';
 })
 export class AppComponent {
   title = 'API Collègues Front';
-  paul:Collegue = collegueMock[0];
-  nicolas:Collegue = collegueMock[1];
-  julie:Collegue = collegueMock[2];
+  colleguesArray: Collegue[] = collegueMock;
 }

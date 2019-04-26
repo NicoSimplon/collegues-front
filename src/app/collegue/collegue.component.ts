@@ -12,12 +12,12 @@ export class CollegueComponent implements OnInit {
 
   constructor() { }
 
-  modifierClick() {
-    console.log("Modification du collègue");
+  modifierClick(event) {
+    console.log("Modification du collègue", event);
   }
 
-  creerClick() {
-    console.log("Mr l'utilisateur, vous venez de cliquer");
+  creerClick(event) {
+    console.log("Création d'un nouveau collègue", event);
   }
 
   ngOnInit() {
