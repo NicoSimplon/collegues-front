@@ -10,7 +10,7 @@
     <hr>
     <div class="card-deck">
         <div class="card h-100" *ngFor="let col of colleguesArray">
-            <app-collegue [col]=col></app-collegue>
+            <app-collegue [col]=col (messageCreation)="afficherMessage($event)" (messageModif)="afficherMessage($event)"></app-collegue>
         </div>
     </div>
     <hr>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Collegue } from '../models/Collegue';
 
 @Component({
@@ -10,14 +10,18 @@ export class CollegueComponent implements OnInit {
 
   @Input() col:Collegue;
 
+  @Output() messageModif = new EventEmitter<string>();
+
+  @Output() messageCreation = new EventEmitter<string>();
+
   constructor() { }
 
-  modifierClick(event) {
-    console.log("Modification du collègue", event);
+  modifier() {
+    this.messageModif.emit("Modification du collègue");
   }
 
-  creerClick(event) {
-    console.log("Création d'un nouveau collègue", event);
+  creer() {
+    this.messageCreation.emit("Création d'un nouveau collègue");
   }
 
   ngOnInit() {

@@ -4,7 +4,7 @@
 <div class="card-body">
     <div class="row">
         <div class="col-3">
-            <img src="{{ col.photoUrl }}" width="100" height="100" alt="Photo du collègue" />
+            <img class="img-fluid" src="{{ col.photoUrl }}" alt="Photo du collègue" />
         </div>
         <div class="col-9">
             <div class="row">
@@ -54,10 +54,10 @@
     <div class="row">
         <div class="col-sm-3"></div>
         <div class="col-sm-6">
-            <a href="#" (click)="creerClick($event)">Créer un nouveau collègue</a>
+            <a href="#" (click)="creer()">Créer un nouveau collègue</a>
         </div>
         <div class="col-sm-3">
-            <button class="btn btn-primary float-right" (click)="modifierClick($event)">Modifier</button>
+            <button class="btn btn-primary float-right" (click)="modifier()">Modifier</button>
         </div>
     </div>
 </div>

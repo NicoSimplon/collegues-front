@@ -10,4 +10,10 @@ import { Collegue } from './models/Collegue';
 export class AppComponent {
   title = 'API Collègues Front';
   colleguesArray: Collegue[] = collegueMock;
+
+  afficherMessage(message:string) {
+    console.log(message);
+    alert(message);
+  }
+
 }
