@@ -16,7 +16,7 @@
             <hr>
             <div class="container-fluid">
                 <div class="card mb-4" *ngFor="let col of colleguesArray">
-                    <app-collegue [col]=col (messageCreation)="afficherMessage($event)"
+                    <app-collegue [col] = col (messageCreation)="afficherMessage($event)"
                         (messageModif)="afficherMessage($event)"></app-collegue>
                 </div>
             </div>

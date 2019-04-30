@@ -1,23 +1,30 @@
 import { Injectable } from '@angular/core';
 import { Collegue } from '../models/Collegue';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
+import { collegueMock } from '../mock/collegues.mock';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class DataService {
 
+	collegueList:Collegue[] = collegueMock;
+	matriculeList:string[];
+	collegueCourant:Collegue;
+
 	constructor() { }
 
 	rechercherParNom(nom: string): string[] {
-		// TODO retourner une liste de matricules fictifs à partir du fichier `src/app/mock/matricules.mock.ts`.  
-		return [""];
+		this.matriculeList = this.collegueList.filter(collegue => collegue.nom === nom).map(collegue => collegue.matricule);
+		return this.matriculeList;
 	}
 
-	recupererCollegueCourant(): Collegue {
+	recupererCollegueCourant(): Collegue[] {
 		// TODO retourner le collègue fictif à partir du fichier `src/app/mock/collegues.mock.ts`.
-		let temp = new Collegue("a1", "babar", "bebe", new Date(1988, 2, 1), "http://dsf", "az@analyzeAndValidateNgModules.com");
-		return temp;
+		// const collegueCourantList: Collegue[] = this.collegueList.filter(collegue => matricules.forEach(mat => mat === collegue.matricule));
+		// return collegueCourantList;
+
+		return this.collegueList;
 	}
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Collegue } from '../models/Collegue';
+import { DataService } from '../services/data.service';
 
 @Component({
 	selector: 'app-collegue',
@@ -19,7 +20,8 @@ export class CollegueComponent implements OnInit {
 
 	@Output() messageCreation = new EventEmitter<string>();
 
-	constructor() { }
+	constructor() {
+	 }
 
 	modifier() {
 

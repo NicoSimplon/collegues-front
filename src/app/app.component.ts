@@ -1,18 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { collegueMock } from './mock/collegues.mock';
 import { Collegue } from './models/Collegue';
+import { DataService } from './services/data.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+	selector: 'app-root',
+	templateUrl: './app.component.html',
+	styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'Administration Collègue';
-  colleguesArray: Collegue[] = collegueMock;
+export class AppComponent implements OnInit {
+	
+	title = 'Administration Collègue';
+	colleguesArray: Collegue[];
 
-  afficherMessage(message:string) {
-    console.log(message);
-  }
+	constructor(private _service: DataService) {
+		;
+	}
+
+	afficherMessage(message: string) {
+		console.log(message);
+	}
+
+	ngOnInit() {
+		this.colleguesArray = this._service.recupererCollegueCourant()
+	}
 
 }
