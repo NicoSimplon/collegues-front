@@ -8,7 +8,7 @@ import { Collegue } from './models/Collegue';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'API Collègues Front';
+  title = 'Administration Collègue';
   colleguesArray: Collegue[] = collegueMock;
 
   afficherMessage(message:string) {
