@@ -13,7 +13,6 @@ export class AppComponent {
 
   afficherMessage(message:string) {
     console.log(message);
-    alert(message);
   }
 
 }

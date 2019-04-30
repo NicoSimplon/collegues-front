@@ -2,29 +2,41 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Collegue } from '../models/Collegue';
 
 @Component({
-  selector: 'app-collegue',
-  templateUrl: './collegue.component.html',
-  styleUrls: ['./collegue.component.css']
+	selector: 'app-collegue',
+	templateUrl: './collegue.component.html',
+	styleUrls: ['./collegue.component.css']
 })
 export class CollegueComponent implements OnInit {
 
-  @Input() col:Collegue;
+	modifierClick:boolean = true;
+	nomBouton:string = "Modifier";
 
-  @Output() messageModif = new EventEmitter<string>();
+	creerClick:boolean = true;
 
-  @Output() messageCreation = new EventEmitter<string>();
+	@Input() col:Collegue;
 
-  constructor() { }
+	@Output() messageModif = new EventEmitter<string>();
 
-  modifier() {
-    this.messageModif.emit("Modification du collègue");
-  }
+	@Output() messageCreation = new EventEmitter<string>();
 
-  creer() {
-    this.messageCreation.emit("Création d'un nouveau collègue");
-  }
+	constructor() { }
 
-  ngOnInit() {
-  }
+	modifier() {
+
+		if (this.modifierClick) {
+			this.nomBouton = "Valider";
+		} else {
+			this.nomBouton = "Modifier";
+		}
+
+		this.messageModif.emit("Modification du collègue");
+	}
+
+	creer() {
+		this.messageCreation.emit("Création d'un nouveau collègue");
+	}
+
+	ngOnInit() {
+	}
 
 }
