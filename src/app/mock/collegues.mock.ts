@@ -26,3 +26,11 @@ collegueMock.push(new Collegue(
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUP0GXR8VxmxVGlaaM_vTOE_G8qb38BQ3L7VUhMNk2MyW9SkZ9", 
     "julie@mail.net"
 ));
+collegueMock.push(new Collegue(
+    "1654fghdfg", 
+    "WorldBoss", 
+    "Hugo", 
+    new Date('1994-01-01'), 
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUP0GXR8VxmxVGlaaM_vTOE_G8qb38BQ3L7VUhMNk2MyW9SkZ9", 
+    "hugo@mail.net"
+));

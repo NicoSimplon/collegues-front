@@ -1,5 +1,5 @@
 <div class="card-header">
-    <h2>{{ col.nom }} {{ col.prenoms }}</h2>
+    <h2>{{ col.nom | uppercase }} {{ col.prenoms }}</h2>
 </div>
 <div class="card-body">
     <div class="row">
@@ -20,7 +20,7 @@
                     <p>Nom : </p>
                 </div>
                 <div class="col-lg-7 col-sm-12">
-                    <p>{{ col.nom }}</p>
+                    <p>{{ col.nom | uppercase}}</p>
                 </div>
             </div>
             <div class="row">
@@ -36,7 +36,7 @@
                     <p>Date de naissance : </p>
                 </div>
                 <div class="col-lg-7 col-sm-12">
-                    <p>{{ col.dateDeNaissance | date : 'mediumDate' }}</p>
+                    <p>{{ col.dateDeNaissance | date }}</p>
                 </div>
             </div>
             <div class="row">
