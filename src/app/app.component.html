@@ -9,15 +9,14 @@
         <div class="col-lg-6 col-sm-12">
             <h2>Recherche par nom : </h2>
             <hr>
-            <app-recherche-par-nom></app-recherche-par-nom>
+            <app-recherche-par-nom (resultResearch)="afficherMessage($event)" (resultResearch)="rechercheParNom()"></app-recherche-par-nom>
         </div>
         <div class="col-lg-6 col-sm-12">
             <h2>Liste des collègues : </h2>
             <hr>
             <div class="container-fluid">
                 <div class="card mb-4" *ngFor="let col of colleguesArray">
-                    <app-collegue [col] = col (messageCreation)="afficherMessage($event)"
-                        (messageModif)="afficherMessage($event)"></app-collegue>
+                    <app-collegue [col]=col (messageCreation)="afficherMessage($event)" (messageModif)="afficherMessage($event)"></app-collegue>
                 </div>
             </div>
         </div>

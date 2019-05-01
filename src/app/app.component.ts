@@ -14,15 +14,18 @@ export class AppComponent implements OnInit {
 	colleguesArray: Collegue[];
 
 	constructor(private _service: DataService) {
-		;
 	}
 
 	afficherMessage(message: string) {
 		console.log(message);
 	}
 
+	rechercheParNom() {
+		this.colleguesArray = this._service.recupererCollegueCourant();
+	}
+
 	ngOnInit() {
-		this.colleguesArray = this._service.recupererCollegueCourant()
+		this.colleguesArray = this._service.getAll();
 	}
 
 }

@@ -11,6 +11,7 @@ export class RechercheParNomComponent implements OnInit {
 
 	matriculeList: string[];
 	resultBool: boolean = false;
+	message: string;
 
 	constructor(private _rechercheNom: DataService) { }
 
@@ -20,6 +21,9 @@ export class RechercheParNomComponent implements OnInit {
 		
 		if (this.matriculeList[0]) {
 			this.resultBool = true;
+			this.message = "";
+		} else {
+			this.message = "Aucun collègue de ce nom trouvé";
 		}
 
 	}

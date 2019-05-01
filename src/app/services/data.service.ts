@@ -10,20 +10,28 @@ export class DataService {
 
 	collegueList:Collegue[] = collegueMock;
 	matriculeList:string[];
-	collegueCourant:Collegue;
+	collegueCourant:Collegue[];
 
 	constructor() { }
 
 	rechercherParNom(nom: string): string[] {
-		this.matriculeList = this.collegueList.filter(collegue => collegue.nom === nom).map(collegue => collegue.matricule);
+		this.matriculeList = this.collegueList
+			.filter(collegue => collegue.nom === nom)
+			.map(collegue => collegue.matricule);
+
+		this.collegueCourant = this.collegueList
+			.filter(collegue => collegue.nom === nom);
+
 		return this.matriculeList;
 	}
 
 	recupererCollegueCourant(): Collegue[] {
-		// TODO retourner le collègue fictif à partir du fichier `src/app/mock/collegues.mock.ts`.
-		// const collegueCourantList: Collegue[] = this.collegueList.filter(collegue => matricules.forEach(mat => mat === collegue.matricule));
-		// return collegueCourantList;
 
+		return this.collegueCourant;
+		
+	}
+
+	getAll(): Collegue[] {
 		return this.collegueList;
 	}
 
