@@ -15,12 +15,12 @@
         </div>
     </form>
     <hr>
-    <div class="container-fluid" *ngIf="resultBool === true; else elseBlock">
+    <div class="container-fluid" *ngIf="resultBool === true">
         <ul *ngFor="let matricule of matriculeList">
             <li>{{ matricule }}</li>
         </ul>
     </div>
-    <ng-template #elseBlock>
-        {{ message }}
-    </ng-template>
+    <div *ngIf="resultMessage === true">
+        <p><strong>{{ message }}</strong></p>
+    </div>
 </div>
