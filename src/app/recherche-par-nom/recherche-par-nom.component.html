@@ -6,7 +6,8 @@
                     <label for="recherheNom">Recherche par nom : </label>
                 </div>
                 <div class="col-lg-4 col-sm-12">
-                    <input class="form-control" type="text" name="rechercheNom" id="rechercheNom" #nomSaisi>
+                    <input class="form-control" type="text" name="rechercheNom" id="rechercheNom" #nomSaisi placeholder="Marty" required>
+                    <small class="form-text text-muted"><em>Les noms commencent par une majuscule</em></small>
                 </div>
                 <div class="col-lg-4 col-sm-12">
                     <button type="button" (click)="rechercher(nomSaisi.value)" class="btn btn-primary">Rechercher</button>
