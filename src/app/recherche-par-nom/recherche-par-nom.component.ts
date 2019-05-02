@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { DataService } from '../services/data.service';
+import { Collegue } from '../models/Collegue';
 
 @Component({
 	selector: 'app-recherche-par-nom',
@@ -7,26 +8,41 @@ import { DataService } from '../services/data.service';
 })
 export class RechercheParNomComponent implements OnInit {
 
-	matriculeList: string[];
+	matriculeList: string[] = [];
 	resultBool: boolean = false;
 	resultMessage: boolean = false;
 	message: string = "";
-	@Output() eventRecherche = new EventEmitter<string>();
 
-	constructor(private _rechercheNom: DataService) { }
+	constructor(private _service: DataService) { }
 
 	rechercher(nom: string): void {
-		this.matriculeList = this._rechercheNom.rechercherParNom(nom);
-		this.eventRecherche.emit("click");
-		
-		if (this.matriculeList.length > 0) {
-			this.resultBool = true;
-			this.resultMessage = false;
-		} else {
-			this.resultMessage = true;
-			this.message = "Aucun collègue de ce nom trouvé";
-		}
 
+		this._service.rechercherParNom(nom)
+			.subscribe((data: string[]) => {
+
+				this.matriculeList = data;
+
+				this.resultMessage = false;
+				this.resultBool = true;
+
+			}, (error: any) => {
+
+				this.resultBool = false;
+				this.resultMessage = true;
+
+				if (error.status > 399 && error.status < 500) {
+					this.message = "Aucun collègue de ce nom trouvé";
+				} else {
+					this.message = "Un problème est survenu sur le serveur, veuillez contacter un administrateur";
+				}
+			});
+
+	}
+
+	afficherCollegue(matricule: string): void {
+		
+		this._service.recupererCollegueCourant(matricule)
+			.subscribe(col => {}, err => {});
 	}
 
 	ngOnInit() {

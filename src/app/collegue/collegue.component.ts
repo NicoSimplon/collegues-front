@@ -13,13 +13,13 @@ export class CollegueComponent implements OnInit {
 
 	creerClick:boolean = true;
 
-	@Input() col:Collegue;
+	col:Collegue = new Collegue('', '', '', undefined, '', '');
 
 	@Output() messageModif = new EventEmitter<string>();
 
 	@Output() messageCreation = new EventEmitter<string>();
 
-	constructor() {
+	constructor(private _service: DataService) {
 	 }
 
 	modifier() {
@@ -38,6 +38,8 @@ export class CollegueComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		this._service.prendreAbonnement()
+			.subscribe(collegue => this.col = collegue);
 	}
 
 }

@@ -1,38 +1,42 @@
 import { Injectable } from '@angular/core';
 import { Collegue } from '../models/Collegue';
-import { analyzeAndValidateNgModules } from '@angular/compiler';
-import { collegueMock } from '../mock/collegues.mock';
+import { environment } from '../../environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { Observable, Subject } from 'rxjs';
+import { tap} from 'rxjs/operators';
+
 
 @Injectable({
 	providedIn: 'root'
 })
 export class DataService {
 
-	collegueList:Collegue[] = collegueMock;
-	matriculeList:string[];
-	collegueCourant:Collegue[];
+	URL_BACKEND: string = environment.backendUrl;
+	subject: Subject<Collegue> = new Subject();
 
-	constructor() { }
+	constructor(private _http: HttpClient) { }
 
-	rechercherParNom(nom: string): string[] {
-		this.matriculeList = this.collegueList
-			.filter(collegue => collegue.nom === nom)
-			.map(collegue => collegue.matricule);
+	
 
-		this.collegueCourant = this.collegueList
-			.filter(collegue => collegue.nom === nom);
+	prendreAbonnement(): Observable<Collegue> {
+		return this.subject.asObservable();
+	  }
 
-		return this.matriculeList;
+	rechercherParNom(nom: string): Observable<string[]> {
+
+		return this._http.get<string[]>(`${this.URL_BACKEND}?nom=${nom}`);
+
 	}
 
-	recupererCollegueCourant(): Collegue[] {
+	recupererCollegueCourant(matricule: string): Observable<Collegue> {
 
-		return this.collegueCourant;
-		
-	}
+		return this._http.get<Collegue>(`${this.URL_BACKEND}/${matricule}`)
+				.pipe(
+					tap(col => {
+						this.subject.next(col);
+					})
+				);
 
-	getAll(): Collegue[] {
-		return this.collegueList;
 	}
 
 }

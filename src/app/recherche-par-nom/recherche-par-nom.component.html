@@ -18,7 +18,7 @@
     <hr>
     <div class="container-fluid" *ngIf="resultBool === true">
         <ul *ngFor="let matricule of matriculeList">
-            <li>{{ matricule }}</li>
+            <li><button class="btn btn-link" (click)="afficherCollegue(matricule)">{{ matricule }}</button></li>
         </ul>
     </div>
     <div *ngIf="resultMessage === true">

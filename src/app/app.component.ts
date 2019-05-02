@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Collegue } from './models/Collegue';
 import { DataService } from './services/data.service';
+import { Observable } from 'rxjs';
 
 @Component({
 	selector: 'app-root',
@@ -9,22 +10,16 @@ import { DataService } from './services/data.service';
 })
 export class AppComponent implements OnInit {
 	
-	title = 'Administration Collègue';
-	colleguesArray: Collegue[];
+	title = 'Administration Collègue'; 
 
-	constructor(private _service: DataService) {
+	constructor() {
 	}
 
 	afficherMessage(message: string) {
 		console.log(message);
 	}
 
-	rechercheParNom() {
-		this.colleguesArray = this._service.recupererCollegueCourant();
-	}
-
 	ngOnInit() {
-		this.colleguesArray = this._service.getAll();
 	}
 
 }
