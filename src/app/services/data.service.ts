@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Collegue } from '../models/Collegue';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
-import { tap} from 'rxjs/operators';
+import { Observable, ReplaySubject } from 'rxjs';
+import { tap, filter, map} from 'rxjs/operators';
 
 
 @Injectable({
@@ -12,7 +12,7 @@ import { tap} from 'rxjs/operators';
 export class DataService {
 
 	URL_BACKEND: string = environment.backendUrl;
-	subject: Subject<Collegue> = new Subject();
+	subject: ReplaySubject<Collegue> = new ReplaySubject();
 
 	constructor(private _http: HttpClient) { }
 
@@ -28,12 +28,16 @@ export class DataService {
 
 	recupererCollegueCourant(matricule: string): Observable<Collegue> {
 
+		this.subject.subscribe(collegue => {
+			if (collegue.matricule === matricule) {
+				return collegue;
+			}
+		});
+
 		return this._http.get<Collegue>(`${this.URL_BACKEND}/${matricule}`)
 				.pipe(
 					tap(col => {
-						
 						this.subject.next(col);
-
 					})
 				);
 
