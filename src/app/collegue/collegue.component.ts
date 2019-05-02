@@ -4,8 +4,7 @@ import { DataService } from '../services/data.service';
 
 @Component({
 	selector: 'app-collegue',
-	templateUrl: './collegue.component.html',
-	styleUrls: ['./collegue.component.css']
+	templateUrl: './collegue.component.html'
 })
 export class CollegueComponent implements OnInit {
 
