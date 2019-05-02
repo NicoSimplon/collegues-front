@@ -16,11 +16,9 @@ export class DataService {
 
 	constructor(private _http: HttpClient) { }
 
-	
-
 	prendreAbonnement(): Observable<Collegue> {
 		return this.subject.asObservable();
-	  }
+	}
 
 	rechercherParNom(nom: string): Observable<string[]> {
 
