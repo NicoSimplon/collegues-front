@@ -31,7 +31,9 @@ export class DataService {
 		return this._http.get<Collegue>(`${this.URL_BACKEND}/${matricule}`)
 				.pipe(
 					tap(col => {
+						
 						this.subject.next(col);
+
 					})
 				);
 

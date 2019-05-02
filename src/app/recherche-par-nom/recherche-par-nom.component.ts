@@ -40,9 +40,10 @@ export class RechercheParNomComponent implements OnInit {
 	}
 
 	afficherCollegue(matricule: string): void {
-		
+
 		this._service.recupererCollegueCourant(matricule)
 			.subscribe(col => {}, err => {});
+
 	}
 
 	ngOnInit() {
