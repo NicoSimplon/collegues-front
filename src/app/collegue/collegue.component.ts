@@ -13,7 +13,7 @@ export class CollegueComponent implements OnInit {
 
 	creerClick:boolean = true;
 
-	col:Collegue = new Collegue('', '', '', undefined, '', '');
+	col:Collegue;
 
 	@Output() messageModif = new EventEmitter<string>();
 
