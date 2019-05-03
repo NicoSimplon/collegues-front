@@ -19,8 +19,18 @@ export class AjoutCollegueComponent implements OnInit {
 		
 		this._service.creerCollegue(this.newCollegue).subscribe(ok => {
 			this.messageOk = `Le collègue ${this.newCollegue.nom} ${this.newCollegue.prenoms} a bien été créé`;
+			setInterval(
+				() => {
+					this.messageOk = undefined;
+				}, 10000
+			);
 		}, ko => {
 			this.messageErreur = ko.error;
+			setInterval(
+				() => {
+					this.messageErreur = undefined;
+				}, 10000
+			);
 		});
 
 	}
