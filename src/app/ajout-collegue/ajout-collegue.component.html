@@ -59,7 +59,7 @@
 						</div>
 						<div class="col-lg-7 col-sm-12">
 							<input type="url" class="form-control" name="photoUrl" #photoUrl="ngModel" id="photoUrl"
-								[(ngModel)]="newCollegue.photoUrl" required minlength="7" pattern="https?://.+" />
+								[(ngModel)]="newCollegue.photoUrl" required minlength="7" pattern="https?://.+" appUrlValidator />
 							<div class="alert alert-danger" *ngIf="(photoUrl.dirty || photoUrl.touched) && photoUrl.invalid">
 								Le champ url de la photo est invalide (Ce champ est obligatoire et doit avoir le format
 								http://image...).
@@ -100,7 +100,7 @@
 					<p><strong>{{messageErreur}}</strong></p>
 				</div>
 				<div class="alert alert-success text-center" *ngIf="messageOk != undefined">
-						<p><strong>{{messageOk}}</strong></p>
+					<p><strong>{{messageOk}}</strong></p>
 				</div>
 			</div>
 		</div>

@@ -9,13 +9,15 @@ import { RechercheParNomComponent } from './recherche-par-nom/recherche-par-nom.
 import { DataService } from './services/data.service';
 import { FormsModule } from '@angular/forms';
 import { AjoutCollegueComponent } from './ajout-collegue/ajout-collegue.component';
+import { UrlValidatorDirective } from './validators/url-validator.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     CollegueComponent,
     RechercheParNomComponent,
-    AjoutCollegueComponent
+    AjoutCollegueComponent,
+    UrlValidatorDirective
   ],
   imports: [
     BrowserModule,
