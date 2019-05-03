@@ -3,96 +3,103 @@
 		<h3>Formulaire de création</h3>
 	</div>
 	<div class="card-body">
-		<form #ajoutForm="ngForm">
-			<div class="row form-group">
-				<div class="col-lg-5 col-sm-12">
-					<label for="nom">Nom : </label>
-				</div>
-				<div class="col-lg-7 col-sm-12">
-					<div>
-						<input type="text" class="form-control" name="nom" #nom="ngModel" id="nom"
-							[(ngModel)]="newCollegue.nom" required minlength="3" />
-						<div class="alert alert-danger" *ngIf="(nom.dirty || nom.touched) && nom.invalid">
-							Le champ nom est invalide (Ce champ est obligatoire et doit contenir au moins 3 caractères).
+		<div class="row">
+			<div class="col-3">
+				<img class="img-fluid" src="{{ newCollegue.photoUrl }}" alt="Photo du collègue" />
+			</div>
+			<div class="col-9">
+				<form #ajoutForm="ngForm">
+					<div class="row form-group">
+						<div class="col-lg-5 col-sm-12">
+							<label for="nom">Nom : </label>
+						</div>
+						<div class="col-lg-7 col-sm-12">
+							<div>
+								<input type="text" class="form-control" name="nom" #nom="ngModel" id="nom"
+									[(ngModel)]="newCollegue.nom" required minlength="3" />
+								<div class="alert alert-danger" *ngIf="(nom.dirty || nom.touched) && nom.invalid">
+									Le champ nom est invalide (Ce champ est obligatoire et doit contenir au moins 3 caractères).
+								</div>
+							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-			<div class="row form-group">
-				<div class="col-lg-5 col-sm-12">
-					<label for="prenoms">Prénoms : </label>
-				</div>
-				<div class="col-lg-7 col-sm-12">
-					<div>
-						<input type="text" class="form-control" name="prenoms" #prenoms="ngModel" id="prenoms"
-							[(ngModel)]="newCollegue.prenoms" required minlength="3" />
-						<div class="alert alert-danger" *ngIf="(prenoms.dirty || prenoms.touched) && prenoms.invalid">
-							Le champ prénoms est invalide (Ce champ est obligatoire et doit contenir au moins 3
-							caractères).
+					<div class="row form-group">
+						<div class="col-lg-5 col-sm-12">
+							<label for="prenoms">Prénoms : </label>
+						</div>
+						<div class="col-lg-7 col-sm-12">
+							<div>
+								<input type="text" class="form-control" name="prenoms" #prenoms="ngModel" id="prenoms"
+									[(ngModel)]="newCollegue.prenoms" required minlength="3" />
+								<div class="alert alert-danger" *ngIf="(prenoms.dirty || prenoms.touched) && prenoms.invalid">
+									Le champ prénoms est invalide (Ce champ est obligatoire et doit contenir au moins 3
+									caractères).
+								</div>
+							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-			<div class="row form-group">
-				<div class="col-lg-5 col-sm-12">
-					<label for="email">Date de Naissance : </label>
-				</div>
-				<div class="col-lg-7 col-sm-12">
-					<div>
-						<input type="date" class="form-control" name="dateDeNaissance" #dateDeNaissance="ngModel"
-							id="dateDeNaissance" [(ngModel)]="newCollegue.dateDeNaissance" />
-						<div class="alert alert-danger"
-							*ngIf="(dateDeNaissance.dirty || dateDeNaissance.touched) && dateDeNaissance.invalid">
-							Le champ date de naissance est invalide (Ce champ est obligatoire).
+					<div class="row form-group">
+						<div class="col-lg-5 col-sm-12">
+							<label for="email">Date de Naissance : </label>
+						</div>
+						<div class="col-lg-7 col-sm-12">
+							<div>
+								<input type="date" class="form-control" name="dateDeNaissance" #dateDeNaissance="ngModel"
+									id="dateDeNaissance" [(ngModel)]="newCollegue.dateDeNaissance" />
+								<div class="alert alert-danger"
+									*ngIf="(dateDeNaissance.dirty || dateDeNaissance.touched) && dateDeNaissance.invalid">
+									Le champ date de naissance est invalide (Ce champ est obligatoire).
+								</div>
+							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-			<div class="row form-group">
-				<div class="col-lg-5 col-sm-12">
-					<label for="photoUrl">Url de la photo : </label>
-				</div>
-				<div class="col-lg-7 col-sm-12">
-					<input type="url" class="form-control" name="photoUrl" #photoUrl="ngModel" id="photoUrl"
-						[(ngModel)]="newCollegue.photoUrl" required minlength="7" pattern="https?://.+" />
-					<div class="alert alert-danger" *ngIf="(photoUrl.dirty || photoUrl.touched) && photoUrl.invalid">
-						Le champ url de la photo est invalide (Ce champ est obligatoire et doit avoir le format
-						http://image...).
-					</div>
-				</div>
-			</div>
-			<div class="row form-group">
-				<div class="col-lg-5 col-sm-12">
-					<label for="email">Email : </label>
-				</div>
-				<div class="col-lg-7 col-sm-12">
-					<div>
-						<input type="email" class="form-control" name="email" #email="ngModel" id="email"
-							[(ngModel)]="newCollegue.email" required
-							pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+.[a-zA-Z.]{2,15}" />
-						<div class="alert alert-danger" *ngIf="(email.dirty || email.touched) && email.invalid">
-							Le champ email est invalide (Ce champ est obligatoire et doit avoir le format
-							mail@mail.com).
+					<div class="row form-group">
+						<div class="col-lg-5 col-sm-12">
+							<label for="photoUrl">Url de la photo : </label>
+						</div>
+						<div class="col-lg-7 col-sm-12">
+							<input type="url" class="form-control" name="photoUrl" #photoUrl="ngModel" id="photoUrl"
+								[(ngModel)]="newCollegue.photoUrl" required minlength="7" pattern="https?://.+" />
+							<div class="alert alert-danger" *ngIf="(photoUrl.dirty || photoUrl.touched) && photoUrl.invalid">
+								Le champ url de la photo est invalide (Ce champ est obligatoire et doit avoir le format
+								http://image...).
+							</div>
 						</div>
 					</div>
+					<div class="row form-group">
+						<div class="col-lg-5 col-sm-12">
+							<label for="email">Email : </label>
+						</div>
+						<div class="col-lg-7 col-sm-12">
+							<div>
+								<input type="email" class="form-control" name="email" #email="ngModel" id="email"
+									[(ngModel)]="newCollegue.email" required
+									pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+.[a-zA-Z.]{2,15}" />
+								<div class="alert alert-danger" *ngIf="(email.dirty || email.touched) && email.invalid">
+									Le champ email est invalide (Ce champ est obligatoire et doit avoir le format
+									mail@mail.com).
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="text-center" *ngIf="ajoutForm.valid, else elseButton">
+						<button class="btn btn-primary" type="submit" (click)="creerCollegue()">
+							Créer
+						</button>
+					</div>
+					<ng-template #elseButton>
+						<div class="text-center">
+							<button class="btn btn-primary" disabled>
+								Créer
+							</button>
+						</div>
+					</ng-template>
+				</form>
+				<br>
+				<div class="alert alert-danger text-center" *ngIf="messageErreur != undefined">
+					<p><strong>{{messageErreur}}</strong></p>
 				</div>
 			</div>
-			<div class="text-center" *ngIf="ajoutForm.valid, else elseButton">
-				<button class="btn btn-primary" type="submit" (click)="creerCollegue()">
-					Créer
-				</button>
-			</div>
-			<ng-template #elseButton>
-				<div class="text-center">
-					<button class="btn btn-primary" disabled>
-						Créer
-					</button>
-				</div>
-			</ng-template>
-		</form>
-		<br>
-		<div class="alert alert-danger text-center" *ngIf="messageErreur != undefined">
-			<p><strong>{{messageErreur}}</strong></p>
 		</div>
 	</div>
 </div>
