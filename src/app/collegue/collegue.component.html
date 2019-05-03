@@ -1,5 +1,8 @@
-<button class="btn btn-link" (click)="creerClick = !creerClick">Créer un nouveau collègue</button>
-<br>
+<div *ngIf="!col">
+    <button class="btn btn-link" (click)="creerClick = !creerClick">Créer un nouveau collègue</button> (Cliquez pour afficher / masquer le formmualaire)
+    <br>
+</div>
+
 <div class="card" *ngIf="col">
     <div class="card-header">
         <h2>{{ col.nom | uppercase }} {{ col.prenoms }}</h2>
@@ -50,9 +53,11 @@
                         <div class="col-lg-7 col-sm-12">
                             <div>
                                 <input type="email" class="form-control" name="email" #email="ngModel" id="email"
-                                    [(ngModel)]="col.email" required pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+.[a-zA-Z.]{2,15}"/>
+                                    [(ngModel)]="col.email" required
+                                    pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+.[a-zA-Z.]{2,15}" />
                                 <div class="alert alert-danger" *ngIf="email.dirty && email.invalid">
-                                    Le champ email est invalide (Ce champ est obligatoire et doit avoir le format mail@mail.com).
+                                    Le champ email est invalide (Ce champ est obligatoire et doit avoir le format
+                                    mail@mail.com).
                                 </div>
                             </div>
                         </div>
@@ -63,24 +68,22 @@
                         </div>
                         <div class="col-lg-7 col-sm-12">
                             <input type="url" class="form-control" name="photoUrl" #photoUrl="ngModel" id="photoUrl"
-                                [(ngModel)]="col.photoUrl" required minlength="7" 
-                                pattern="https?://.+"/>
+                                [(ngModel)]="col.photoUrl" required minlength="7" pattern="https?://.+" />
                             <div class="alert alert-danger" *ngIf="photoUrl.dirty && photoUrl.invalid">
-                                Le champ url de la photo est invalide (Ce champ est obligatoire et doit avoir le format http://image).
-                            </div> 
+                                Le champ url de la photo est invalide (Ce champ est obligatoire et doit avoir le format
+                                http://image).
+                            </div>
                         </div>
                     </div>
                     <br>
                     <div class="row">
                         <div class="col-sm-3"></div>
                         <div class="col-sm-6">
-                            <button class="btn btn-link" [hidden]="!modifierClick" (click)="creer()"
-                                (click)="creerClick = !creerClick">Créer un nouveau collègue</button>
                         </div>
                         <div class="col-sm-3">
                             <div *ngIf="modifForm.valid; else elseButton">
-                                <button type="submit" [hidden]="!creerClick" class="btn btn-primary float-right" (click)="modifier(col.matricule)"
-                                    (click)="modifierClick = !modifierClick">
+                                <button type="submit" class="btn btn-primary float-right"
+                                    (click)="modifier(col.matricule)" (click)="modifierClick = !modifierClick">
                                     Valider
                                 </button>
                             </div>
@@ -108,16 +111,15 @@
                                 (click)="creerClick = !creerClick">Créer un nouveau collègue</button>
                         </div>
                         <div class="col-sm-3">
-                            <button class="btn btn-primary float-right"
-                                (click)="modifierClick = !modifierClick">
+                            <button class="btn btn-primary float-right" (click)="modifierClick = !modifierClick">
                                 Modifier
                             </button>
                         </div>
                     </div>
                 </ng-template>
                 <br>
-                <div class="alert alert-danger" *ngIf="messageErreur != undefined">
-                    <p>{{messageErreur}}</p>
+                <div class="alert alert-danger text-center" *ngIf="messageErreur != undefined">
+                    <p><strong>{{messageErreur}}</strong></p>
                 </div>
             </div>
         </div>
