@@ -11,13 +11,14 @@ export class AjoutCollegueComponent implements OnInit {
 	newCollegue: NewCollegue = new NewCollegue();
 
 	messageErreur: string;
+	messageOk: string;
 
 	constructor(private _service: DataService) { }
 
 	creerCollegue() {
 		
 		this._service.creerCollegue(this.newCollegue).subscribe(ok => {
-			console.log(ok);
+			this.messageOk = `Le collègue ${this.newCollegue.nom} ${this.newCollegue.prenoms} a bien été créé`;
 		}, ko => {
 			this.messageErreur = ko.error;
 		});

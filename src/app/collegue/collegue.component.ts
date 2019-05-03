@@ -17,6 +17,7 @@ export class CollegueComponent implements OnInit {
 	collegueModifie: ModifCollegue = new ModifCollegue();
 
 	messageErreur: string;
+	messageOk: string;
 
 	constructor(private _service: DataService) {
 	 }
@@ -27,7 +28,7 @@ export class CollegueComponent implements OnInit {
 		this.collegueModifie.photoUrl = this.col.photoUrl;
 		
 		this._service.modifierCollegue(matricule, this.collegueModifie).subscribe(ok => {
-			console.log(ok);
+			this.messageOk = `Le collègue ${this.col.nom} ${this.col.prenoms} a bien été modifié`;
 		}, ko => {
 			this.messageErreur = ko.error;
 		});
