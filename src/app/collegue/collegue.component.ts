@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Collegue } from '../models/Collegue';
 import { DataService } from '../services/data.service';
+import { ModifCollegue } from '../models/ModifCollegue';
 
 @Component({
 	selector: 'app-collegue',
@@ -8,12 +9,14 @@ import { DataService } from '../services/data.service';
 })
 export class CollegueComponent implements OnInit {
 
-	modifierClick:boolean = true;
-	nomBouton:string = "Modifier";
+	modifierClick: boolean = true;
+	creerClick: boolean = true;
 
-	creerClick:boolean = true;
+	col: Collegue;
 
-	col:Collegue;
+	collegueModifie: ModifCollegue = new ModifCollegue();
+
+	messageErreur: string;
 
 	@Output() messageModif = new EventEmitter<string>();
 
@@ -22,15 +25,19 @@ export class CollegueComponent implements OnInit {
 	constructor(private _service: DataService) {
 	 }
 
-	modifier() {
-
-		if (this.modifierClick) {
-			this.nomBouton = "Valider";
-		} else {
-			this.nomBouton = "Modifier";
-		}
+	modifier(matricule: string) {
 
 		this.messageModif.emit("Modification du collègue");
+
+		this.collegueModifie.email = this.col.email;
+		this.collegueModifie.photoUrl = this.col.photoUrl;
+		
+		this._service.modifierCollegue(matricule, this.collegueModifie).subscribe(ok => {
+			console.log(ok);
+		}, ko => {
+			this.messageErreur = ko;
+		});
+
 	}
 
 	creer() {

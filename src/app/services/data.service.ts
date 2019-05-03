@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { Collegue } from '../models/Collegue';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Observable, ReplaySubject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { tap, filter, map} from 'rxjs/operators';
+import { ModifCollegue } from '../models/ModifCollegue';
 
 
 @Injectable({
@@ -12,12 +13,18 @@ import { tap, filter, map} from 'rxjs/operators';
 export class DataService {
 
 	URL_BACKEND: string = environment.backendUrl;
-	subject: ReplaySubject<Collegue> = new ReplaySubject();
+	subject: Subject<Collegue> = new Subject();
 
 	constructor(private _http: HttpClient) { }
 
 	prendreAbonnement(): Observable<Collegue> {
 		return this.subject.asObservable();
+	}
+
+	modifierCollegue(matricule: string, collegueModifie: ModifCollegue): Observable<Collegue> {
+
+		return this._http.patch<Collegue>(`${this.URL_BACKEND}/${matricule}`,  collegueModifie);
+
 	}
 
 	rechercherParNom(nom: string): Observable<string[]> {
