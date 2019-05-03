@@ -1,3 +1,5 @@
+<button class="btn btn-link" (click)="creerClick = !creerClick">Créer un nouveau collègue</button>
+<br>
 <div class="card" *ngIf="col">
     <div class="card-header">
         <h2>{{ col.nom | uppercase }} {{ col.prenoms }}</h2>
@@ -106,14 +108,24 @@
                                 (click)="creerClick = !creerClick">Créer un nouveau collègue</button>
                         </div>
                         <div class="col-sm-3">
-                            <button [hidden]="!creerClick" class="btn btn-primary float-right"
+                            <button class="btn btn-primary float-right"
                                 (click)="modifierClick = !modifierClick">
                                 Modifier
                             </button>
                         </div>
                     </div>
                 </ng-template>
+                <br>
+                <div class="alert alert-danger" *ngIf="messageErreur != undefined">
+                    <p>{{messageErreur}}</p>
+                </div>
             </div>
         </div>
     </div>
+</div>
+<br>
+<div *ngIf="!creerClick">
+    <h2>Ajout d'un nouveau collègue : </h2>
+    <hr>
+    <app-ajout-collegue></app-ajout-collegue>
 </div>

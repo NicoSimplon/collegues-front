@@ -18,16 +18,10 @@ export class CollegueComponent implements OnInit {
 
 	messageErreur: string;
 
-	@Output() messageModif = new EventEmitter<string>();
-
-	@Output() messageCreation = new EventEmitter<string>();
-
 	constructor(private _service: DataService) {
 	 }
 
 	modifier(matricule: string) {
-
-		this.messageModif.emit("Modification du collègue");
 
 		this.collegueModifie.email = this.col.email;
 		this.collegueModifie.photoUrl = this.col.photoUrl;
@@ -35,13 +29,9 @@ export class CollegueComponent implements OnInit {
 		this._service.modifierCollegue(matricule, this.collegueModifie).subscribe(ok => {
 			console.log(ok);
 		}, ko => {
-			this.messageErreur = ko;
+			this.messageErreur = ko.error;
 		});
 
-	}
-
-	creer() {
-		this.messageCreation.emit("Création d'un nouveau collègue");
 	}
 
 	ngOnInit() {

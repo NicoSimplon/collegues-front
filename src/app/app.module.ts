@@ -8,12 +8,14 @@ import { CollegueComponent } from './collegue/collegue.component';
 import { RechercheParNomComponent } from './recherche-par-nom/recherche-par-nom.component';
 import { DataService } from './services/data.service';
 import { FormsModule } from '@angular/forms';
+import { AjoutCollegueComponent } from './ajout-collegue/ajout-collegue.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CollegueComponent,
-    RechercheParNomComponent
+    RechercheParNomComponent,
+    AjoutCollegueComponent
   ],
   imports: [
     BrowserModule,

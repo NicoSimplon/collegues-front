@@ -3,8 +3,9 @@ import { Collegue } from '../models/Collegue';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import { tap, filter, map} from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { ModifCollegue } from '../models/ModifCollegue';
+import { NewCollegue } from '../models/NewCollegue';
 
 
 @Injectable({
@@ -19,6 +20,12 @@ export class DataService {
 
 	prendreAbonnement(): Observable<Collegue> {
 		return this.subject.asObservable();
+	}
+
+	creerCollegue(newCollegue: NewCollegue): Observable<Collegue> {
+
+		return this._http.post<Collegue>(`${this.URL_BACKEND}`, newCollegue);
+
 	}
 
 	modifierCollegue(matricule: string, collegueModifie: ModifCollegue): Observable<Collegue> {

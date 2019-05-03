@@ -9,10 +9,6 @@ export class AppComponent implements OnInit {
 	
 	title = 'Administration Collègue'; 
 
-	afficherMessage(message: string) {
-		console.log(message);
-	}
-
 	ngOnInit() {
 	}
 
