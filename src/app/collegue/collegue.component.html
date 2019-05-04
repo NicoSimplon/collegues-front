@@ -76,16 +76,9 @@
                         <div class="col-sm-6">
                         </div>
                         <div class="col-sm-3">
-                            <div *ngIf="modifForm.valid; else elseButton">
-                                <button type="submit" class="btn btn-primary float-right" (click)="modifier(col.matricule)" (click)="modifierClick = !modifierClick">
-                                    Valider
-                                </button>
-                            </div>
-                            <ng-template #elseButton>
-                                <button class="btn btn-primary float-right" disabled>
-                                    Valider
-                                </button>
-                            </ng-template>
+                            <button [disabled]="modifForm.invalid" class="btn btn-primary float-right" (click)="modifier(col.matricule)" (click)="modifierClick = !modifierClick">
+                                Valider
+                            </button>
                         </div>
                     </div>
                 </form>
@@ -101,7 +94,7 @@
                     <div class="row">
                         <div class="col-sm-3"></div>
                         <div class="col-sm-6">
-                            <button class="btn btn-link" [hidden]="!modifierClick" (click)="creerClick = !creerClick">Créer un nouveau collègue</button>
+                            <button class="btn btn-link" (click)="creerClick = !creerClick">Créer un nouveau collègue</button>
                         </div>
                         <div class="col-sm-3">
                             <button class="btn btn-primary float-right" (click)="modifierClick = !modifierClick">
@@ -111,10 +104,10 @@
                     </div>
                 </ng-template>
                 <br>
-                <div [hidden]="!modifierClick" class="alert alert-danger text-center" *ngIf="messageErreur != undefined">
+                <div class="alert alert-danger text-center" *ngIf="messageErreur">
                     <p><strong>{{messageErreur}}</strong></p>
                 </div>
-                <div [hidden]="!modifierClick" class="alert alert-success text-center" *ngIf="messageOk != undefined">
+                <div class="alert alert-success text-center" *ngIf="messageOk">
                     <p><strong>{{messageOk}}</strong></p>
                 </div>
             </div>

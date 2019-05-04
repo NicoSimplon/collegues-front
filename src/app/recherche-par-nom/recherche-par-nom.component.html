@@ -16,12 +16,12 @@
         </div>
     </form>
     <hr>
-    <div class="container-fluid" *ngIf="resultBool === true">
+    <div class="container-fluid" *ngIf="message === undefined">
         <ul *ngFor="let matricule of matriculeList">
             <li><button class="btn btn-link" (click)="afficherCollegue(matricule)">{{ matricule }}</button></li>
         </ul>
     </div>
-    <div *ngIf="resultMessage === true">
+    <div *ngIf="message">
         <p><strong>{{ message }}</strong></p>
     </div>
 </div>

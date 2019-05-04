@@ -13,6 +13,7 @@ export class UrlValidatorDirective implements Validator {
       // TODO écrire la règle de validation
       // En cas de règle respecté (value commence par http), retourner null
       // Sinon retourner l'objet { urlInvalide : true }
+      
 
       return null;
     }

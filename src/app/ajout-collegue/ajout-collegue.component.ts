@@ -22,14 +22,14 @@ export class AjoutCollegueComponent implements OnInit {
 			setInterval(
 				() => {
 					this.messageOk = undefined;
-				}, 10000
+				}, 7000
 			);
 		}, ko => {
 			this.messageErreur = ko.error;
 			setInterval(
 				() => {
 					this.messageErreur = undefined;
-				}, 10000
+				}, 7000
 			);
 		});
 

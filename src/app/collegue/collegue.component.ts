@@ -28,18 +28,20 @@ export class CollegueComponent implements OnInit {
 		this.collegueModifie.photoUrl = this.col.photoUrl;
 		
 		this._service.modifierCollegue(matricule, this.collegueModifie).subscribe(ok => {
+			this.messageErreur = undefined;
 			this.messageOk = `Le collègue ${this.col.nom} ${this.col.prenoms} a bien été modifié`;
 			setInterval(
 				() => {
 					this.messageOk = undefined;
-				}, 10000
+				}, 7000
 			);
 		}, ko => {
+			this.messageOk = undefined;
 			this.messageErreur = ko.error;
 			setInterval(
 				() => {
 					this.messageErreur = undefined;
-				}, 10000
+				}, 7000
 			);
 		});
 

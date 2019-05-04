@@ -9,32 +9,26 @@ import { Collegue } from '../models/Collegue';
 export class RechercheParNomComponent implements OnInit {
 
 	matriculeList: string[] = [];
-	resultBool: boolean = false;
-	resultMessage: boolean = false;
-	message: string = "";
+	message: string;
 
 	constructor(private _service: DataService) { }
 
 	rechercher(nom: string): void {
 
 		this._service.rechercherParNom(nom)
-			.subscribe((data: string[]) => {
+			.subscribe((matricules: string[]) => {
 
-				this.matriculeList = data;
-
-				this.resultMessage = false;
-				this.resultBool = true;
+				this.message = undefined;
+				this.matriculeList = matricules;
 
 			}, (error: any) => {
-
-				this.resultBool = false;
-				this.resultMessage = true;
 
 				if (error.status > 399 && error.status < 500) {
 					this.message = "Aucun collègue de ce nom trouvé";
 				} else {
 					this.message = "Un problème est survenu sur le serveur, veuillez contacter un administrateur";
 				}
+				
 			});
 
 	}

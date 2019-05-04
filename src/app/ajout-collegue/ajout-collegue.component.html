@@ -72,26 +72,19 @@
                             </div>
                         </div>
                     </div>
-                    <div class="text-center" *ngIf="ajoutForm.valid, else elseButton">
-                        <button class="btn btn-primary" type="submit" (click)="creerCollegue()">
+                    <div class="alert alert-danger text-center" *ngIf="messageErreur">
+                        <p><strong>{{messageErreur}}</strong></p>
+                    </div>
+                    <div class="alert alert-success text-center" *ngIf="messageOk">
+                        <p><strong>{{messageOk}}</strong></p>
+                    </div>
+                    <br>
+                    <div class="text-center">
+                        <button class="btn btn-primary" [disabled]="ajoutForm.invalid" type="submit" (click)="creerCollegue()">
 							Créer
 						</button>
                     </div>
-                    <ng-template #elseButton>
-                        <div class="text-center">
-                            <button class="btn btn-primary" disabled>
-								Créer
-							</button>
-                        </div>
-                    </ng-template>
                 </form>
-                <br>
-                <div class="alert alert-danger text-center" *ngIf="messageErreur != undefined">
-                    <p><strong>{{messageErreur}}</strong></p>
-                </div>
-                <div class="alert alert-success text-center" *ngIf="messageOk != undefined">
-                    <p><strong>{{messageOk}}</strong></p>
-                </div>
             </div>
         </div>
     </div>
