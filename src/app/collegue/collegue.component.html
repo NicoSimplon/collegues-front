@@ -52,12 +52,9 @@
                         </div>
                         <div class="col-lg-7 col-sm-12">
                             <div>
-                                <input type="email" class="form-control" name="email" #email="ngModel" id="email"
-                                    [(ngModel)]="col.email" required
-                                    pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+.[a-zA-Z.]{2,15}" />
+                                <input type="email" class="form-control" name="email" #email="ngModel" id="email" [(ngModel)]="col.email" required pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+.[a-zA-Z.]{2,15}" />
                                 <div class="alert alert-danger" *ngIf="email.dirty && email.invalid">
-                                    Le champ email est invalide (Ce champ est obligatoire et doit avoir le format
-                                    mail@mail.com).
+                                    Le champ email est invalide (Ce champ est obligatoire et doit avoir le format mail@mail.com).
                                 </div>
                             </div>
                         </div>
@@ -67,11 +64,9 @@
                             <label for="photoUrl">Url de la photo : </label>
                         </div>
                         <div class="col-lg-7 col-sm-12">
-                            <input type="url" class="form-control" name="photoUrl" #photoUrl="ngModel" id="photoUrl"
-                                [(ngModel)]="col.photoUrl" required minlength="7" pattern="https?://.+"  appUrlValidator/>
+                            <input type="url" class="form-control" name="photoUrl" #photoUrl="ngModel" id="photoUrl" [(ngModel)]="col.photoUrl" required minlength="7" maxlength="255" pattern="https?://.+" appUrlValidator/>
                             <div class="alert alert-danger" *ngIf="photoUrl.dirty && photoUrl.invalid">
-                                Le champ url de la photo est invalide (Ce champ est obligatoire et doit avoir le format
-                                http://image).
+                                Le champ url de la photo est invalide (Ce champ est obligatoire et doit avoir le format http://image... et une longueur maximum de 255 caractères).
                             </div>
                         </div>
                     </div>
@@ -82,8 +77,7 @@
                         </div>
                         <div class="col-sm-3">
                             <div *ngIf="modifForm.valid; else elseButton">
-                                <button type="submit" class="btn btn-primary float-right"
-                                    (click)="modifier(col.matricule)" (click)="modifierClick = !modifierClick">
+                                <button type="submit" class="btn btn-primary float-right" (click)="modifier(col.matricule)" (click)="modifierClick = !modifierClick">
                                     Valider
                                 </button>
                             </div>
@@ -107,8 +101,7 @@
                     <div class="row">
                         <div class="col-sm-3"></div>
                         <div class="col-sm-6">
-                            <button class="btn btn-link" [hidden]="!modifierClick"
-                                (click)="creerClick = !creerClick">Créer un nouveau collègue</button>
+                            <button class="btn btn-link" [hidden]="!modifierClick" (click)="creerClick = !creerClick">Créer un nouveau collègue</button>
                         </div>
                         <div class="col-sm-3">
                             <button class="btn btn-primary float-right" (click)="modifierClick = !modifierClick">
@@ -122,8 +115,8 @@
                     <p><strong>{{messageErreur}}</strong></p>
                 </div>
                 <div [hidden]="!modifierClick" class="alert alert-success text-center" *ngIf="messageOk != undefined">
-					<p><strong>{{messageOk}}</strong></p>
-				</div>
+                    <p><strong>{{messageOk}}</strong></p>
+                </div>
             </div>
         </div>
     </div>
