@@ -1,57 +1,64 @@
 <div class="container">
-	<div class="card">
-		<div class="card-header">
-			<h2>{{ collegue.nom }} {{ collegue.prenoms }}</h2>
-		</div>
-		<div class="card-body">
-			<div class="row">
-				<img class="img-fluid" src="{{ collegue.photoUrl }}" alt="{{ collegue.nom }} {{ collegue.prenoms }}" />
-			</div>
-			<div class="row">
-				<div class="col-sm-6">
-					Matricule :
-				</div>
-				<div class="col-sm-6">
-					{{ collegue.photoUrl }}
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-6">
-					Nom :
-				</div>
-				<div class="col-sm-6">
-					{{ collegue.nom | uppercase }}
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-6">
-					Prénoms :
-				</div>
-				<div class="col-sm-6">
-					{{ collegue.prenoms }}
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-6">
-					Date de naissance :
-				</div>
-				<div class="col-sm-6">
-					{{ collegue.dateDeNaissance | date: 'dd/MM/yyy' }}
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-6">
-					Email :
-				</div>
-				<div class="col-sm-6">
-					{{ collegue.email }}
-				</div>
-			</div>
-		</div>
-		<div class="card-footer text-center">
-			<button routerLink="/galerie" class="btn btn-primary">
+    <div class="card">
+        <div class="card-header">
+            <h2>{{ collegue.nom }} {{ collegue.prenoms }}</h2>
+        </div>
+        <div class="card-body">
+            <div class="d-flex justify-content-center">
+                <img class="img-fluid" src="{{ collegue.photoUrl }}" alt="{{ collegue.nom }} {{ collegue.prenoms }}" />
+            </div>
+            <div class="row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            Matricule :
+                        </div>
+                        <div class="col-sm-6">
+                            {{ collegue.matricule }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            Nom :
+                        </div>
+                        <div class="col-sm-6">
+                            {{ collegue.nom | uppercase }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            Prénoms :
+                        </div>
+                        <div class="col-sm-6">
+                            {{ collegue.prenoms }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            Date de naissance :
+                        </div>
+                        <div class="col-sm-6">
+                            {{ collegue.dateDeNaissance | date: 'dd/MM/yyy' }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            Email :
+                        </div>
+                        <div class="col-sm-6">
+                            {{ collegue.email }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+        </div>
+        <div class="card-footer text-center">
+            <button routerLink="/galerie" class="btn btn-primary">
 				Retour
 			</button>
-		</div>
-	</div>
+        </div>
+    </div>
 </div>
+<br>
