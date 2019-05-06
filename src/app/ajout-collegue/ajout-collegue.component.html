@@ -65,8 +65,11 @@
                         </div>
                         <div class="col-lg-7 col-sm-12">
                             <div>
-                                <input type="email" class="form-control" name="email" #email="ngModel" id="email" [(ngModel)]="newCollegue.email" required pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+.[a-zA-Z.]{2,15}" appEmailValidator/>
-                                <div class="alert alert-danger" *ngIf="(email.dirty || email.touched) && email.invalid">
+                                <input type="email" class="form-control" name="email" #email="ngModel" id="email" [(ngModel)]="newCollegue.email" required pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+.[a-zA-Z.]{2,15}" appEmailValidator [ngModelOptions]="{updateOn: 'blur'}"/>
+                                <div class="alert alert-danger" *ngIf="email.dirty && email.errors && email.errors.emailInvalide">
+                                    {{ email.errors.emailInvalide }}
+                                </div>
+                                <div class="alert alert-danger" *ngIf="(email.dirty || email.touched) && email.errors && email.errors.required">
                                     Le champ email est invalide (Ce champ est obligatoire et doit avoir le format mail@mail.com).
                                 </div>
                             </div>

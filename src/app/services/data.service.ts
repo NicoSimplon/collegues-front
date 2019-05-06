@@ -3,7 +3,7 @@ import { Collegue } from '../models/Collegue';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { tap, map } from 'rxjs/operators';
 import { ModifCollegue } from '../models/ModifCollegue';
 import { NewCollegue } from '../models/NewCollegue';
 
@@ -54,6 +54,12 @@ export class DataService {
 						this.subject.next(col);
 					})
 				);
+
+	}
+
+	verifierEmail(email: string) {
+
+		return this._http.get<boolean>(`${this.URL_BACKEND}/verif?email=${email}`);
 
 	}
 
