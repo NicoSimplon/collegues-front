@@ -1,0 +1,13 @@
+<div class="container-fluid">
+	<h2 class="display-4">
+		Galerie
+	</h2>
+	<hr>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-3 mb-4" *ngFor="let photo of photos">
+				<img class="img-fluid" src="{{ photo.photoUrl }}" alt="Photo du collègue" />
+			</div>
+		</div>
+	</div>
+</div>

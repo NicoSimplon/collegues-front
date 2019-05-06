@@ -10,6 +10,12 @@ import { DataService } from './services/data.service';
 import { FormsModule } from '@angular/forms';
 import { AjoutCollegueComponent } from './ajout-collegue/ajout-collegue.component';
 import { EmailValidatorDirective } from './validators/email-validator.directive';
+import { MenuComponentComponent } from './menu-component/menu-component.component';
+import { AccueilComponent } from './accueil/accueil.component';
+import { GallerieComponent } from './gallerie/gallerie.component';
+import { AProposComponent } from './apropos/apropos.component';
+import { RouterModule } from '@angular/router';
+import { ROUTES } from './app.routes';
 
 @NgModule({
   declarations: [
@@ -17,13 +23,18 @@ import { EmailValidatorDirective } from './validators/email-validator.directive'
     CollegueComponent,
     RechercheParNomComponent,
     AjoutCollegueComponent,
-    EmailValidatorDirective
+    EmailValidatorDirective,
+    MenuComponentComponent,
+    AccueilComponent,
+    GallerieComponent,
+    AProposComponent
   ],
   imports: [
     BrowserModule,
     NgbModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(ROUTES)
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

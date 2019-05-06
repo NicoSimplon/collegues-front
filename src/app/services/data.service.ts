@@ -6,6 +6,7 @@ import { Observable, Subject } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
 import { ModifCollegue } from '../models/ModifCollegue';
 import { NewCollegue } from '../models/NewCollegue';
+import { StockagePhotoMatricule } from '../models/StockagePhotoMatricule';
 
 
 @Injectable({
@@ -57,9 +58,15 @@ export class DataService {
 
 	}
 
-	verifierEmail(email: string) {
+	verifierEmail(email: string): Observable<boolean> {
 
 		return this._http.get<boolean>(`${this.URL_BACKEND}/verif?email=${email}`);
+
+	}
+
+	recupererPhotos(): Observable<StockagePhotoMatricule[]> {
+
+		return this._http.get<StockagePhotoMatricule[]>(`${this.URL_BACKEND}/photos`);
 
 	}
 
