@@ -14,6 +14,7 @@ export class CollegueComponent implements OnInit {
 
 	col: Collegue;
 	emailTemp: string;
+	urlTemp: string;
 
 	collegueModifie: ModifCollegue = new ModifCollegue();
 
@@ -24,10 +25,11 @@ export class CollegueComponent implements OnInit {
 
 	modifier(matricule: string) {
 
-		if (this.col.email != this.emailTemp){
+		if (this.col.email != this.emailTemp || this.col.photoUrl != this.urlTemp){
 		
 			this.collegueModifie.email = this.col.email;
 			this.collegueModifie.photoUrl = this.col.photoUrl;
+			this.emailTemp = this.collegueModifie.email;
 			
 			this._service.modifierCollegue(matricule, this.collegueModifie).subscribe(ok => {
 				this.messageErreur = undefined;
@@ -55,6 +57,7 @@ export class CollegueComponent implements OnInit {
 			.subscribe(collegue => {
 				this.col = collegue;
 				this.emailTemp = this.col.email;
+				this.urlTemp = this.col.photoUrl;
 			});
 	}
 
