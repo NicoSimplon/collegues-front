@@ -30,6 +30,7 @@ export class CollegueComponent implements OnInit {
 			this.collegueModifie.email = this.col.email;
 			this.collegueModifie.photoUrl = this.col.photoUrl;
 			this.emailTemp = this.collegueModifie.email;
+			this.urlTemp = this.collegueModifie.photoUrl;
 			
 			this._service.modifierCollegue(matricule, this.collegueModifie).subscribe(ok => {
 				this.messageErreur = undefined;
