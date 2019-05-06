@@ -9,7 +9,7 @@ import { RechercheParNomComponent } from './recherche-par-nom/recherche-par-nom.
 import { DataService } from './services/data.service';
 import { FormsModule } from '@angular/forms';
 import { AjoutCollegueComponent } from './ajout-collegue/ajout-collegue.component';
-import { UrlValidatorDirective } from './validators/url-validator.directive';
+import { EmailValidatorDirective } from './validators/email-validator.directive';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import { UrlValidatorDirective } from './validators/url-validator.directive';
     CollegueComponent,
     RechercheParNomComponent,
     AjoutCollegueComponent,
-    UrlValidatorDirective
+    EmailValidatorDirective
   ],
   imports: [
     BrowserModule,
