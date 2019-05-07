@@ -5,7 +5,7 @@
     <hr>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-3 mb-4 d-flex justify-content-center" *ngFor="let photo of photos">
+            <div class="col-lg-3 col-sm-12 mb-4 d-flex justify-content-center" *ngFor="let photo of photos">
                 <a routerLink="/galerie/{{ photo.matricule }}"><img class="img-fluid" src="{{ photo.photoUrl }}" alt="Photo du collègue" /></a>
             </div>
         </div>
