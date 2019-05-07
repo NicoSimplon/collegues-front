@@ -33,7 +33,7 @@ export class DataService {
 
 	modifierCollegue(matricule: string, collegueModifie: ModifCollegue): Observable<Collegue> {
 
-		return this._http.patch<Collegue>(`${this.URL_BACKEND}/${matricule}`,  collegueModifie);
+		return this._http.patch<Collegue>(`${this.URL_BACKEND}/${matricule}`, collegueModifie);
 
 	}
 
@@ -52,11 +52,11 @@ export class DataService {
 		});
 
 		return this._http.get<Collegue>(`${this.URL_BACKEND}/${matricule}`)
-				.pipe(
-					tap(col => {
-						this.subject.next(col);
-					})
-				);
+			.pipe(
+				tap(col => {
+					this.subject.next(col);
+				})
+			);
 
 	}
 
@@ -78,15 +78,15 @@ export class DataService {
 
 	}
 
-	ajouterCommentaire(commentaire: Commentaire): Observable<Commentaire> {
+	ajouterCommentaire(commentaire: NewCommentaire, matricule: string): Observable<Commentaire> {
 
-		return this._http.post<Commentaire>(`${this.URL_BACKEND}/${commentaire.collegue.matricule}/commentaires`, commentaire);
+		return this._http.post<Commentaire>(`${this.URL_BACKEND}/${matricule}/commentaires`, commentaire);
 
 	}
 
-	supprimerCommentaire(commentaire: NewCommentaire, matricule: string): Observable<NewCommentaire> {
+	supprimerCommentaire(commentaire: Commentaire, matricule: string): Observable<String> {
 
-		return this._http.post<NewCommentaire>(`${this.URL_BACKEND}/${matricule}/commentaires`, commentaire);
+		return this._http.delete<string>(`${this.URL_BACKEND}/${matricule}/commentaires/${commentaire.id}`);
 
 	}
 

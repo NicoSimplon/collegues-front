@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="collegue">
     <div class="card">
         <div class="card-header">
             <h2>{{ collegue.nom | uppercase }} {{ collegue.prenoms }}</h2>
@@ -63,10 +63,19 @@
 </div>
 <br>
 <div class="container">
-    <form class="form-group">
+    <form class="form-group" #form="ngForm" (ngSubmit)="submit()">
         <div class="form-group">
-            <textarea class="form-control mb-4" name="note" id="contenu" rows="5" ></textarea>
-            <button class="btn btn-primary">Valider</button>
+            <textarea class="form-control mb-4" name="note" id="contenu" rows="5" minlength="5" #comment [(ngModel)]="newComment.contenu" required placeholder="Ici on peut prendre des notes sur un collègue"></textarea>
+            <div class="alert alert-danger" *ngIf="(comment.dirty || comment.touched) && comment.errors && comment.errors.required">
+                Le champ doit conteni un commentaire d'au moins 5 caractères
+            </div>
+            <div class="alert alert-danger text-center" *ngIf="message">
+                <p><strong>{{message}}</strong></p>
+            </div>
+            <div class="alert alert-success text-center" *ngIf="messageOk">
+                <p><strong>{{messageOk}}</strong></p>
+            </div>
+            <button [disabled]="form.invalid" type="submit" class="btn btn-primary">Valider</button>
         </div>
     </form>
 </div>
@@ -75,7 +84,7 @@
     <h2>Commentaires précédents : </h2>
     <hr>
     <div *ngFor="let commentaire of commentaires">
-        <app-commentaire [commentaire]="commentaire"></app-commentaire>
+        <app-commentaire [commentaire]="commentaire" [collegue]="collegue" (event)="updateList($event)"></app-commentaire>
     </div>
     <hr>
 </div>
