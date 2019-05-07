@@ -17,6 +17,7 @@ import { AProposComponent } from './apropos/apropos.component';
 import { RouterModule } from '@angular/router';
 import { ROUTES } from './app.routes';
 import { PhotoDetailComponent } from './photo-detail/photo-detail.component';
+import { CommentaireComponent } from './commentaire/commentaire.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { PhotoDetailComponent } from './photo-detail/photo-detail.component';
     AccueilComponent,
     GallerieComponent,
     AProposComponent,
-    PhotoDetailComponent
+    PhotoDetailComponent,
+    CommentaireComponent
   ],
   imports: [
     BrowserModule,

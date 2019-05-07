@@ -62,3 +62,20 @@
     </div>
 </div>
 <br>
+<div class="container">
+    <form class="form-group">
+        <div class="form-group">
+            <textarea class="form-control mb-4" name="note" id="contenu" rows="5" ></textarea>
+            <button class="btn btn-primary">Valider</button>
+        </div>
+    </form>
+</div>
+<br>
+<div class="container">
+    <h2>Commentaires précédents : </h2>
+    <hr>
+    <div *ngFor="let commentaire of commentaires">
+        <app-commentaire [commentaire]="commentaire"></app-commentaire>
+    </div>
+    <hr>
+</div>

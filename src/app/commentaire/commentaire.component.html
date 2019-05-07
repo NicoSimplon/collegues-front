@@ -1,0 +1,13 @@
+<div class="card mb-4 mt-4">
+	<div class="card-header">
+		<i>{{ commentaire.creationDate | date: 'dd/MM/yyyy, HH:mm:ss' }}</i>
+	</div>
+	<div class="card-body">
+		<div class="card-text">
+			<p>{{ commentaire.contenu }}</p>
+		</div>
+	</div>
+	<div class="card-footer text-center">
+		<button class="btn btn-danger">Supprimer</button>
+	</div>
+</div>
