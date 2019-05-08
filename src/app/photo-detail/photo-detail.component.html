@@ -84,7 +84,7 @@
     <h2>Commentaires précédents : </h2>
     <hr>
     <div *ngFor="let commentaire of commentaires">
-        <app-commentaire [commentaire]="commentaire" [collegue]="collegue" (event)="updateList($event)"></app-commentaire>
+        <app-commentaire [commentaire]="commentaire" [matricule]="collegue.matricule" (event)="updateListAfterDelete($event)"></app-commentaire>
     </div>
     <hr>
 </div>

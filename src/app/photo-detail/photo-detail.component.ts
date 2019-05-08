@@ -21,25 +21,15 @@ export class PhotoDetailComponent implements OnInit {
 
 	constructor(private _service: DataService, private route: ActivatedRoute) { }
 
-	updateList(message: string): void {
-		if (message) {
-			this.erreur = message;
-		} else {
-			this.updateCommentList(`Le commentaire a été supprimé avec succès`);
-		}
+	updateListAfterDelete(): void {
+		this.updateCommentList(`Le commentaire a été supprimé avec succès`);		
 	}
 
 	saveNewComment(): void {
 		if (this.newComment.contenu.length >= 5) {
 			this._service.ajouterCommentaire(this.newComment, this.matricule).subscribe(
 				ok => {
-					this.updateCommentList();
-					this.messageOk = "Le commentaire a été ajouté avec succès";
-					setInterval(
-						() => {
-							this.messageOk = undefined;
-						}, 7000
-					);
+					this.updateCommentList("Le commentaire a été ajouté avec succès");
 				},
 				error => {
 					this.message = `${error.error}`;
@@ -67,7 +57,7 @@ export class PhotoDetailComponent implements OnInit {
 				}
 			},
 			error => {
-				this.message = `${error.error}`;
+				this.message = `Une erreur est survenue : ${error.error}`;
 				setInterval(
 					() => {
 						this.message = undefined;

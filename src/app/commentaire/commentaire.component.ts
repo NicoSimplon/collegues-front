@@ -10,14 +10,14 @@ import { Collegue } from '../models/Collegue';
 export class CommentaireComponent implements OnInit {
 
 	@Input() commentaire: Commentaire;
-	@Input() collegue: Collegue;
+	@Input() matricule: string;
 	@Output() event = new EventEmitter();
 
 	constructor(private _service: DataService) { }
 
 	submit(): void {
 		if (confirm("Veuillez confirmer la suppression du commentaire")) {
-			this._service.supprimerCommentaire(this.commentaire, this.collegue.matricule).subscribe(
+			this._service.supprimerCommentaire(this.commentaire, this.matricule).subscribe(
 				ok => {
 					this.event.emit("Suppression du commentaire réalisée avec succès");
 				},
