@@ -24,36 +24,16 @@ export class PhotoDetailComponent implements OnInit {
 	updateList(message: string): void {
 		if (message) {
 			this.erreur = message;
+		} else {
+			this.updateCommentList(`Le commentaire a été supprimé avec succès`);
 		}
-		this._service.recupererCommentaires(this.matricule).subscribe(
-			commentaireList => {
-				this.commentaires = commentaireList;
-				this.messageOk = `Le commentaire a été supprimé avec succès`;
-				setInterval(
-					() => {
-						this.messageOk = undefined;
-					}, 7000
-				);
-			},
-			error => {
-				this.message = `Un problème est survenu durant la suppression du commentaire: ${error.error}`;
-				setInterval(
-					() => {
-						this.message = undefined;
-					}, 7000
-				);
-			}
-		);
 	}
 
 	saveNewComment(): void {
 		if (this.newComment.contenu.length >= 5) {
 			this._service.ajouterCommentaire(this.newComment, this.matricule).subscribe(
 				ok => {
-					this._service.recupererCommentaires(this.matricule).subscribe(
-						commentaireList => this.commentaires = commentaireList,
-						error => {}
-					);
+					this.updateCommentList();
 					this.messageOk = "Le commentaire a été ajouté avec succès";
 					setInterval(
 						() => {
@@ -73,6 +53,30 @@ export class PhotoDetailComponent implements OnInit {
 		}
 	}
 
+	updateCommentList(message?: string) {
+		this._service.recupererCommentaires(this.matricule).subscribe(
+			commentaireList => {
+				this.commentaires = commentaireList;
+				if (message) {
+					this.messageOk = message;
+					setInterval(
+						() => {
+							this.messageOk = undefined;
+						}, 7000
+					);
+				}
+			},
+			error => {
+				this.message = `${error.error}`;
+				setInterval(
+					() => {
+						this.message = undefined;
+					}, 7000
+				);
+			}
+		);
+	}
+
 	ngOnInit() {
 		
 		this.matricule = this.route.snapshot.paramMap.get("matricule");
@@ -82,10 +86,7 @@ export class PhotoDetailComponent implements OnInit {
 			error => this.message = `${error.error}`
 		);
 
-		this._service.recupererCommentaires(this.matricule).subscribe(
-			commentaireList => this.commentaires = commentaireList,
-			error => this.message = `${error.error}`
-		);
+		this.updateCommentList();
 
 	}
 
