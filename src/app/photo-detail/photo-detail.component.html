@@ -63,9 +63,9 @@
 </div>
 <br>
 <div class="container">
-    <form class="form-group" #form="ngForm" (ngSubmit)="submit()">
+    <form class="form-group" #form="ngForm">
         <div class="form-group">
-            <textarea class="form-control mb-4" name="comment" id="comment" rows="5" minlength="5" #comment="ngModel" [(ngModel)]="newComment.contenu" required placeholder="Ici on peut prendre des notes sur un collègue"></textarea>
+            <textarea class="form-control mb-4" name="comment" id="comment" rows="5" minlength="5" #comment="ngModel" [(ngModel)]="newComment.contenu" required (keydown.enter)="saveNewComment()" placeholder="Ici on peut prendre des notes sur un collègue. Appuyez sur la touche entrée pour valider"></textarea>
             <div class="alert alert-danger" *ngIf="(comment.dirty || comment.touched) && comment.invalid">
                 Le champ doit contenir un commentaire d'au moins 5 caractères
             </div>
@@ -75,7 +75,7 @@
             <div class="alert alert-success text-center" *ngIf="messageOk">
                 <p><strong>{{messageOk}}</strong></p>
             </div>
-            <button [disabled]="form.invalid" type="submit" class="btn btn-primary">Valider</button>
+            <!-- <button [disabled]="form.invalid" type="submit" class="btn btn-primary">Valider</button> -->
         </div>
     </form>
 </div>

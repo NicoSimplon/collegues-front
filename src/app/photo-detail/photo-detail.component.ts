@@ -46,31 +46,31 @@ export class PhotoDetailComponent implements OnInit {
 		);
 	}
 
-	submit(): void {
-
-		this._service.ajouterCommentaire(this.newComment, this.matricule).subscribe(
-			ok => {
-				this._service.recupererCommentaires(this.matricule).subscribe(
-					commentaireList => this.commentaires = commentaireList,
-					error => {}
-				);
-				this.messageOk = "Le commentaire a été ajouté avec succès";
-				setInterval(
-					() => {
-						this.messageOk = undefined;
-					}, 7000
-				);
-			},
-			error => {
-				this.message = `${error.error}`;
-				setInterval(
-					() => {
-						this.message = undefined;
-					}, 7000
-				);
-			}
-		);
-		
+	saveNewComment(): void {
+		if (this.newComment.contenu.length >= 5) {
+			this._service.ajouterCommentaire(this.newComment, this.matricule).subscribe(
+				ok => {
+					this._service.recupererCommentaires(this.matricule).subscribe(
+						commentaireList => this.commentaires = commentaireList,
+						error => {}
+					);
+					this.messageOk = "Le commentaire a été ajouté avec succès";
+					setInterval(
+						() => {
+							this.messageOk = undefined;
+						}, 7000
+					);
+				},
+				error => {
+					this.message = `${error.error}`;
+					setInterval(
+						() => {
+							this.message = undefined;
+						}, 7000
+					);
+				}
+			);
+		}
 	}
 
 	ngOnInit() {
