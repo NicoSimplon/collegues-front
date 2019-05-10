@@ -4,6 +4,11 @@
 
 Lien vers l'interface : [Lien](https://nicosimplon.github.io/collegues-front/)
 
+Voici des identifiants d'un utilisateur admin: 
+
+    email: marty@societe.com
+    mot de pass: pass1
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
 
 ## Development server
