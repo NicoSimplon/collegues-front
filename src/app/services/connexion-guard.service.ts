@@ -14,9 +14,9 @@ export class ConnexionGuardService implements CanActivate {
 	canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable < boolean | UrlTree >  {
 
 		return this.authService.isLoggedIn()
-		.pipe(
-			catchError( () => of(this.router.parseUrl('/login') ))
-		);
+			.pipe(
+				catchError( () => of(this.router.parseUrl('/login') ))
+			);
 	
 	}
 

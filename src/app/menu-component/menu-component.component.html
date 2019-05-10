@@ -2,5 +2,5 @@
     <button class="btn btn-secondary" routerLink="/accueil">Accueil</button>
     <button class="btn btn-secondary" routerLink="/galerie">Galerie</button>
     <button class="btn btn-secondary" routerLink="/apropos">A Propos</button>
-    <button class="btn btn-secondary" (click)="deconnexion()">Déconnexion</button>
+    <button class="btn btn-secondary" (click)="deconnexion()" *ngIf="connecte">Déconnexion</button>
 </nav>

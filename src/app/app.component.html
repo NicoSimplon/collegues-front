@@ -4,7 +4,10 @@
     </h1>
 </div>
 <div class="d-flex justify-content-center">
-    <app-menu-component></app-menu-component>
+    <app-menu-component (deco)="deconnexion($event)"></app-menu-component>
+</div>
+<div class="container-fluid">
+    <h5 class="float-right" *ngIf="user != null">Vous êtes connecté {{ user.nom | uppercase}} {{ user.prenoms }}</h5>
 </div>
 <br>
 <router-outlet></router-outlet>
