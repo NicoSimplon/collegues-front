@@ -16,6 +16,8 @@ export class AjoutCollegueComponent implements OnInit {
 	constructor(private _service: DataService) { }
 
 	creerCollegue() {
+
+		this.newCollegue.roles = ["ROLE_USER"]
 		
 		this._service.creerCollegue(this.newCollegue).subscribe(ok => {
 			this.messageOk = `Le collègue ${this.newCollegue.nom} ${this.newCollegue.prenoms} a bien été créé`;

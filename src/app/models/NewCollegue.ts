@@ -5,5 +5,7 @@ export class NewCollegue {
     public dateDeNaissance: Date;
     public photoUrl: string;
     public email: string;
+    public motDePasse: string;
+    public roles: string[];
 
 }

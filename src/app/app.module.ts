@@ -18,6 +18,7 @@ import { RouterModule } from '@angular/router';
 import { ROUTES } from './app.routes';
 import { PhotoDetailComponent } from './photo-detail/photo-detail.component';
 import { CommentaireComponent } from './commentaire/commentaire.component';
+import { AuthentificationComponent } from './authentification/authentification.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { CommentaireComponent } from './commentaire/commentaire.component';
     GallerieComponent,
     AProposComponent,
     PhotoDetailComponent,
-    CommentaireComponent
+    CommentaireComponent,
+    AuthentificationComponent
   ],
   imports: [
     BrowserModule,

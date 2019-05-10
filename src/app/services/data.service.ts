@@ -16,7 +16,7 @@ import { NewCommentaire } from '../models/NewCommentaire';
 })
 export class DataService {
 
-	URL_BACKEND: string = environment.backendUrl;
+	URL_BACKEND: string = `${environment.backendUrl}/collegues`;
 	subject: Subject<Collegue> = new Subject();
 
 	constructor(private _http: HttpClient) { }
@@ -27,19 +27,19 @@ export class DataService {
 
 	creerCollegue(newCollegue: NewCollegue): Observable<Collegue> {
 
-		return this._http.post<Collegue>(`${this.URL_BACKEND}`, newCollegue);
+		return this._http.post<Collegue>(`${this.URL_BACKEND}`, newCollegue, { withCredentials: true });
 
 	}
 
 	modifierCollegue(matricule: string, collegueModifie: ModifCollegue): Observable<Collegue> {
 
-		return this._http.patch<Collegue>(`${this.URL_BACKEND}/${matricule}`, collegueModifie);
+		return this._http.patch<Collegue>(`${this.URL_BACKEND}/${matricule}`, collegueModifie, { withCredentials: true });
 
 	}
 
 	rechercherParNom(nom: string): Observable<string[]> {
 
-		return this._http.get<string[]>(`${this.URL_BACKEND}?nom=${nom}`);
+		return this._http.get<string[]>(`${this.URL_BACKEND}?nom=${nom}`, { withCredentials: true });
 
 	}
 
@@ -51,7 +51,7 @@ export class DataService {
 			}
 		});
 
-		return this._http.get<Collegue>(`${this.URL_BACKEND}/${matricule}`)
+		return this._http.get<Collegue>(`${this.URL_BACKEND}/${matricule}`, { withCredentials: true })
 			.pipe(
 				tap(col => {
 					this.subject.next(col);
@@ -62,31 +62,31 @@ export class DataService {
 
 	verifierEmail(email: string): Observable<boolean> {
 
-		return this._http.get<boolean>(`${this.URL_BACKEND}/verif?email=${email}`);
+		return this._http.get<boolean>(`${this.URL_BACKEND}/verif?email=${email}`, { withCredentials: true });
 
 	}
 
 	recupererPhotos(): Observable<StockagePhotoMatricule[]> {
 
-		return this._http.get<StockagePhotoMatricule[]>(`${this.URL_BACKEND}/photos`);
+		return this._http.get<StockagePhotoMatricule[]>(`${this.URL_BACKEND}/photos`, { withCredentials: true });
 
 	}
 
 	recupererCommentaires(matricule: string): Observable<Commentaire[]> {
 
-		return this._http.get<Commentaire[]>(`${this.URL_BACKEND}/${matricule}/commentaires`);
+		return this._http.get<Commentaire[]>(`${this.URL_BACKEND}/${matricule}/commentaires`, { withCredentials: true });
 
 	}
 
 	ajouterCommentaire(commentaire: NewCommentaire, matricule: string): Observable<Commentaire> {
 
-		return this._http.post<Commentaire>(`${this.URL_BACKEND}/${matricule}/commentaires`, commentaire);
+		return this._http.post<Commentaire>(`${this.URL_BACKEND}/${matricule}/commentaires`, commentaire, { withCredentials: true });
 
 	}
 
 	supprimerCommentaire(commentaire: Commentaire, matricule: string): Observable<String> {
 
-		return this._http.delete<string>(`${this.URL_BACKEND}/${matricule}/commentaires/${commentaire.id}`);
+		return this._http.delete<string>(`${this.URL_BACKEND}/${matricule}/commentaires/${commentaire.id}`, { withCredentials: true });
 
 	}
 
