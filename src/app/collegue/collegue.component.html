@@ -1,5 +1,5 @@
 <div *ngIf="!col">
-    <button class="btn btn-link" (click)="creerClick = !creerClick">Créer un nouveau collègue</button> (Cliquez pour afficher / masquer le formmualaire)
+    <button class="btn btn-link" (click)="creerClick = !creerClick">Créer un nouveau collègue</button> (Cliquez pour afficher / masquer le formulaire)
     <br>
 </div>
 
@@ -52,7 +52,7 @@
                         </div>
                         <div class="col-lg-7 col-sm-12">
                             <div>
-                                <input type="email" class="form-control" name="email" #email="ngModel" id="email" [(ngModel)]="col.email" required pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+.[a-zA-Z.]{2,15}" appEmailValidator [ngModelOptions]="{updateOn: 'blur'}"/>
+                                <input type="email" class="form-control" name="email" #email="ngModel" id="email" [(ngModel)]="col.email" required pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+.[a-zA-Z.]{2,15}" appEmailValidator [ngModelOptions]="{updateOn: 'blur'}" />
                                 <div class="alert alert-danger" *ngIf="email.dirty && email.errors && email.errors.emailInvalide && emailTemp != col.email">
                                     {{ email.errors.emailInvalide }}
                                 </div>
