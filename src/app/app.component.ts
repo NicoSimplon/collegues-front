@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
 
 	constructor(private _service: AuthService){}
 
-	deconnexion(): void {
+	deconnexion(event: boolean): void {
 		this.user = null;
 	}
 

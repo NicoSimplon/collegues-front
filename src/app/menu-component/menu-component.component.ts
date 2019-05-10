@@ -16,6 +16,7 @@ export class MenuComponentComponent implements OnInit {
 	deconnexion() {
 		this._service.deconnexion().subscribe(
 			ok => {
+				console.log("Déconnecté");
 				this.connecte = false;
 				this.deco.emit(true);
 			},
