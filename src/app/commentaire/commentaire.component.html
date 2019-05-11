@@ -8,6 +8,9 @@
         </div>
     </div>
     <div class="card-footer text-right">
+        <div class="alert alert-danger text-center" *ngIf="messageError">
+            <p>{{ messageError }}</p>
+        </div>
         <form (ngSubmit)="submit()">
             <button class="btn btn-danger" type="submit">Supprimer</button>
         </form>

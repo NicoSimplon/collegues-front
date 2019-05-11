@@ -12,6 +12,7 @@ export class CommentaireComponent implements OnInit {
 	@Input() commentaire: Commentaire;
 	@Input() matricule: string;
 	@Output() event = new EventEmitter();
+	messageError: string;
 
 	constructor(private _service: DataService) { }
 
@@ -19,10 +20,19 @@ export class CommentaireComponent implements OnInit {
 		if (confirm("Veuillez confirmer la suppression du commentaire")) {
 			this._service.supprimerCommentaire(this.commentaire, this.matricule).subscribe(
 				ok => {
-					this.event.emit("Suppression du commentaire réalisée avec succès");
+					this.event.emit("Le commentaire a été supprimé avec succès");
 				},
 				error => {
-					this.event.emit(`Une erreur est survenue: ${error.message}`);
+					if(error.status === 403){
+						this.messageError = "Vous devez avoir des droits d'administrateur pour pouvoir supprimer un commentaire";
+					} else {
+						this.messageError = error.message;
+					}
+					setInterval(
+						() => {
+							this.messageError = undefined;
+						}, 7000
+					);
 				}
 			)
 		}

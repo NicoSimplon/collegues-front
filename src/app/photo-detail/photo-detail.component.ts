@@ -20,8 +20,8 @@ export class PhotoDetailComponent implements OnInit {
 
 	constructor(private _service: DataService, private route: ActivatedRoute) { }
 
-	updateListAfterDelete(): void {
-		this.updateCommentList(`Le commentaire a été supprimé avec succès`);		
+	updateListAfterDelete(message: string): void {
+		this.updateCommentList(message);		
 	}
 
 	saveNewComment(): void {
