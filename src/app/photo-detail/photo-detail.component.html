@@ -56,8 +56,8 @@
         </div>
         <div class="card-footer text-center">
             <button routerLink="/galerie" class="btn btn-primary">
-				Retour
-			</button>
+                Retour
+            </button>
         </div>
     </div>
 </div>
@@ -75,12 +75,11 @@
             <div class="alert alert-success text-center" *ngIf="messageOk">
                 <p><strong>{{messageOk}}</strong></p>
             </div>
-            <!-- <button [disabled]="form.invalid" type="submit" class="btn btn-primary">Valider</button> -->
         </div>
     </form>
 </div>
 <br>
-<div class="container">
+<div class="container" *ngIf="commentaires.length > 0">
     <h2>Commentaires précédents : </h2>
     <hr>
     <div *ngFor="let commentaire of commentaires">

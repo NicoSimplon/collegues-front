@@ -19,6 +19,7 @@ import { ROUTES } from './app.routes';
 import { PhotoDetailComponent } from './photo-detail/photo-detail.component';
 import { CommentaireComponent } from './commentaire/commentaire.component';
 import { AuthentificationComponent } from './authentification/authentification.component';
+import { ProfilComponent } from './profil/profil.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { AuthentificationComponent } from './authentification/authentification.c
     AProposComponent,
     PhotoDetailComponent,
     CommentaireComponent,
-    AuthentificationComponent
+    AuthentificationComponent,
+    ProfilComponent
   ],
   imports: [
     BrowserModule,

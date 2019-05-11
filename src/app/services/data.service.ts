@@ -84,7 +84,7 @@ export class DataService {
 
 	}
 
-	supprimerCommentaire(commentaire: Commentaire, matricule: string): Observable<String> {
+	supprimerCommentaire(commentaire: Commentaire, matricule: string): Observable<string> {
 
 		return this._http.delete<string>(`${this.URL_BACKEND}/${matricule}/commentaires/${commentaire.id}`, { withCredentials: true });
 

@@ -5,6 +5,7 @@ import { Authentification } from '../models/Authentification';
 import { Observable, Subject } from 'rxjs';
 import { UserConnecte } from '../models/UserConnecte';
 import { tap, map, catchError } from 'rxjs/operators';
+import { Password } from '../models/Password';
 
 @Injectable({
 	providedIn: 'root'
@@ -37,6 +38,10 @@ export class AuthService {
 
 	getUser (): Observable<UserConnecte> {
 		return this._http.get<UserConnecte>(`${this.URL_BACKEND}/me`, { withCredentials: true });
+	}
+
+	modifierMotDePasse (password: Password): Observable<string> {
+		return this._http.post<string>(`${this.URL_BACKEND}/profil`, password, { withCredentials: true });
 	}
 
 	isLoggedIn (): Observable<boolean> {

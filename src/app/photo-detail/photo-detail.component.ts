@@ -15,7 +15,6 @@ export class PhotoDetailComponent implements OnInit {
 	collegue: Collegue;
 	message: string;
 	messageOk: string;
-	erreur: string;
 	newComment: NewCommentaire = new NewCommentaire();
 	commentaires: Commentaire[];
 
@@ -32,7 +31,11 @@ export class PhotoDetailComponent implements OnInit {
 					this.updateCommentList("Le commentaire a été ajouté avec succès");
 				},
 				error => {
-					this.message = `${error.error}`;
+					if (error.status === 403) {
+						this.message = "Vous devez avoir des droits d'administrateur pour ajouter un commentaire";
+					} else {
+						this.message = `${error.message}`;
+					}
 					setInterval(
 						() => {
 							this.message = undefined;
@@ -57,7 +60,7 @@ export class PhotoDetailComponent implements OnInit {
 				}
 			},
 			error => {
-				this.message = `Une erreur est survenue : ${error.error}`;
+				this.message = `Une erreur est survenue : ${error.message}`;
 				setInterval(
 					() => {
 						this.message = undefined;
@@ -73,7 +76,14 @@ export class PhotoDetailComponent implements OnInit {
 		
 		this._service.recupererCollegueCourant(this.matricule).subscribe(
 			collegue => this.collegue = collegue,
-			error => this.message = `${error.error}`
+			error => {
+				this.message = error.message;
+				setInterval(
+					() => {
+						this.message = undefined;
+					}, 7000
+				);
+			}
 		);
 
 		this.updateCommentList();

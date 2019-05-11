@@ -6,8 +6,12 @@
 <div class="d-flex justify-content-center">
     <app-menu-component (deco)="deconnexion($event)"></app-menu-component>
 </div>
-<div class="container-fluid">
-    <h5 class="float-right" *ngIf="user != null">Vous êtes connecté {{ user.nom | uppercase}} {{ user.prenoms }}</h5>
+<div class="container-fluid" *ngIf="user != null">
+    <div class="float-right">
+        <h5>Vous êtes connecté {{ user.nom | uppercase}} {{ user.prenoms }}</h5>
+        <br>
+        <button routerLink="/profil" class="btn btn-link">Modifier le profil</button>
+    </div>
 </div>
 <br>
 <router-outlet></router-outlet>

@@ -33,7 +33,6 @@ export class CollegueComponent implements OnInit {
 			this.urlTemp = this.collegueModifie.photoUrl;
 			
 			this._service.modifierCollegue(matricule, this.collegueModifie).subscribe(ok => {
-				this.messageErreur = undefined;
 				this.messageOk = `Le collègue ${this.col.nom} ${this.col.prenoms} a bien été modifié`;
 				setInterval(
 					() => {
@@ -41,8 +40,11 @@ export class CollegueComponent implements OnInit {
 					}, 7000
 				);
 			}, ko => {
-				this.messageOk = undefined;
-				this.messageErreur = ko.error;
+				if(ko.status === 403) {
+					this.messageErreur = "Il faut avoir des droits d'aministateur pour modifier un collègue";
+				} else {
+					this.messageErreur = ko.message;
+				}
 				setInterval(
 					() => {
 						this.messageErreur = undefined;

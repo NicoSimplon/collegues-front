@@ -15,11 +15,9 @@
                         </div>
                         <div class="col-lg-7 col-sm-12">
                             <div>
-                                <input type="text" class="form-control" name="nom" #nom="ngModel" id="nom"
-                                    [(ngModel)]="newCollegue.nom" required minlength="3" />
+                                <input type="text" class="form-control" name="nom" #nom="ngModel" id="nom" [(ngModel)]="newCollegue.nom" required minlength="3" />
                                 <div class="alert alert-danger" *ngIf="(nom.dirty || nom.touched) && nom.invalid">
-                                    Le champ nom est invalide (Ce champ est obligatoire et doit contenir au moins 3
-                                    caractères).
+                                    Le champ nom est invalide (Ce champ est obligatoire et doit contenir au moins 3 caractères).
                                 </div>
                             </div>
                         </div>
@@ -30,12 +28,9 @@
                         </div>
                         <div class="col-lg-7 col-sm-12">
                             <div>
-                                <input type="text" class="form-control" name="prenoms" #prenoms="ngModel" id="prenoms"
-                                    [(ngModel)]="newCollegue.prenoms" required minlength="3" />
-                                <div class="alert alert-danger"
-                                    *ngIf="(prenoms.dirty || prenoms.touched) && prenoms.invalid">
-                                    Le champ prénoms est invalide (Ce champ est obligatoire et doit contenir au moins 3
-                                    caractères).
+                                <input type="text" class="form-control" name="prenoms" #prenoms="ngModel" id="prenoms" [(ngModel)]="newCollegue.prenoms" required minlength="3" />
+                                <div class="alert alert-danger" *ngIf="(prenoms.dirty || prenoms.touched) && prenoms.invalid">
+                                    Le champ prénoms est invalide (Ce champ est obligatoire et doit contenir au moins 3 caractères).
                                 </div>
                             </div>
                         </div>
@@ -46,11 +41,8 @@
                         </div>
                         <div class="col-lg-7 col-sm-12">
                             <div>
-                                <input type="date" class="form-control" name="dateDeNaissance"
-                                    #dateDeNaissance="ngModel" id="dateDeNaissance"
-                                    [(ngModel)]="newCollegue.dateDeNaissance" />
-                                <div class="alert alert-danger"
-                                    *ngIf="(dateDeNaissance.dirty || dateDeNaissance.touched) && dateDeNaissance.invalid">
+                                <input type="date" class="form-control" name="dateDeNaissance" #dateDeNaissance="ngModel" id="dateDeNaissance" [(ngModel)]="newCollegue.dateDeNaissance" />
+                                <div class="alert alert-danger" *ngIf="(dateDeNaissance.dirty || dateDeNaissance.touched) && dateDeNaissance.invalid">
                                     Le champ date de naissance est invalide (Ce champ est obligatoire).
                                 </div>
                             </div>
@@ -61,13 +53,9 @@
                             <label for="photoUrl">Url de la photo : </label>
                         </div>
                         <div class="col-lg-7 col-sm-12">
-                            <input type="url" class="form-control" name="photoUrl" #photoUrl="ngModel" id="photoUrl"
-                                [(ngModel)]="newCollegue.photoUrl" required minlength="7" maxlength="255"
-                                pattern="https?://.+" />
-                            <div class="alert alert-danger"
-                                *ngIf="(photoUrl.dirty || photoUrl.touched) && photoUrl.invalid">
-                                Le champ url de la photo est invalide (Ce champ est obligatoire et doit avoir le format
-                                http://image... (maximum 255 caractères)).
+                            <input type="url" class="form-control" name="photoUrl" #photoUrl="ngModel" id="photoUrl" [(ngModel)]="newCollegue.photoUrl" required minlength="7" maxlength="255" pattern="https?://.+" />
+                            <div class="alert alert-danger" *ngIf="(photoUrl.dirty || photoUrl.touched) && photoUrl.invalid">
+                                Le champ url de la photo est invalide (Ce champ est obligatoire et doit avoir le format http://image... (maximum 255 caractères)).
                             </div>
                         </div>
                     </div>
@@ -77,18 +65,12 @@
                         </div>
                         <div class="col-lg-7 col-sm-12">
                             <div>
-                                <input type="email" class="form-control" name="email" #email="ngModel" id="email"
-                                    [(ngModel)]="newCollegue.email" required
-                                    pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+.[a-zA-Z.]{2,15}" appEmailValidator
-                                    [ngModelOptions]="{updateOn: 'blur'}" />
-                                <div class="alert alert-danger"
-                                    *ngIf="email.dirty && email.errors && email.errors.emailInvalide">
+                                <input type="email" class="form-control" name="email" #email="ngModel" id="email" [(ngModel)]="newCollegue.email" required pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+.[a-zA-Z.]{2,15}" appEmailValidator [ngModelOptions]="{updateOn: 'blur'}" />
+                                <div class="alert alert-danger" *ngIf="email.dirty && email.errors && email.errors.emailInvalide">
                                     {{ email.errors.emailInvalide }}
                                 </div>
-                                <div class="alert alert-danger"
-                                    *ngIf="(email.dirty || email.touched) && email.errors">
-                                    Le champ email est invalide (Ce champ est obligatoire et doit avoir le format
-                                    mail@mail.com).
+                                <div class="alert alert-danger" *ngIf="(email.dirty || email.touched) && email.errors">
+                                    Le champ email est invalide (Ce champ est obligatoire et doit avoir le format mail@mail.com).
                                 </div>
                             </div>
                         </div>
@@ -99,10 +81,8 @@
                         </div>
                         <div class="col-lg-7 col-sm-12">
                             <div>
-                                <input type="password" class="form-control" name="motDePasse" #motDePasse="ngModel" id="motDePasse"
-                                    [(ngModel)]="newCollegue.motDePasse" required />
-                                <div class="alert alert-danger"
-                                    *ngIf="(motDePasse.dirty || motDePasse.touched) && motDePasse.errors">
+                                <input type="password" class="form-control" name="motDePasse" #motDePasse="ngModel" id="motDePasse" [(ngModel)]="newCollegue.motDePasse" required />
+                                <div class="alert alert-danger" *ngIf="(motDePasse.dirty || motDePasse.touched) && motDePasse.errors">
                                     Le champ mot de passe est invalide (Ce champ est obligatoire).
                                 </div>
                             </div>
@@ -116,8 +96,7 @@
                     </div>
                     <br>
                     <div class="text-center">
-                        <button class="btn btn-primary" [disabled]="ajoutForm.invalid" type="submit"
-                            (click)="creerCollegue()">
+                        <button class="btn btn-primary" [disabled]="ajoutForm.invalid" type="submit" (click)="creerCollegue()">
                             Créer
                         </button>
                     </div>

@@ -22,7 +22,7 @@ export class CommentaireComponent implements OnInit {
 					this.event.emit("Suppression du commentaire réalisée avec succès");
 				},
 				error => {
-					this.event.emit(`Une erreur est survenue: ${error.error}`);
+					this.event.emit(`Une erreur est survenue: ${error.message}`);
 				}
 			)
 		}
