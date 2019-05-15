@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { Commentaire } from '../models/Commentaire';
-import { Collegue } from '../models/Collegue';
 
 @Component({
 	selector: 'app-commentaire',
@@ -26,7 +25,7 @@ export class CommentaireComponent implements OnInit {
 					if(error.status === 403){
 						this.messageError = "Vous devez avoir des droits d'administrateur pour pouvoir supprimer un commentaire";
 					} else {
-						this.messageError = error.message;
+						this.messageError = error.error;
 					}
 					setInterval(
 						() => {
