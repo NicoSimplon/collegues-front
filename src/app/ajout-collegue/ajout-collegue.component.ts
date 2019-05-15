@@ -30,7 +30,7 @@ export class AjoutCollegueComponent implements OnInit {
 			if(ko.status === 403) {
 				this.messageErreur = "Il faut avoir des droits d'aministateur pour ajouter un nouveau collègue";
 			} else {
-				this.messageErreur = ko.message;
+				this.messageErreur = ko.error;
 			}
 			setInterval(
 				() => {
