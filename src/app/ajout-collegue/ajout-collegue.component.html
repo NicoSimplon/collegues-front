@@ -8,7 +8,7 @@
                 <img class="img-fluid" src="{{ newCollegue.photoUrl }}" alt="Photo du collègue" />
             </div>
             <div class="col-9">
-                <form #ajoutForm="ngForm">
+                <form #ajoutForm="ngForm" (ngSubmit)="creerCollegue()">
                     <div class="row form-group">
                         <div class="col-lg-5 col-sm-12">
                             <label for="nom">Nom : </label>
@@ -96,7 +96,7 @@
                     </div>
                     <br>
                     <div class="text-center">
-                        <button class="btn btn-primary" [disabled]="ajoutForm.invalid" type="submit" (click)="creerCollegue()">
+                        <button class="btn btn-primary" [disabled]="ajoutForm.invalid" type="submit">
                             Créer
                         </button>
                     </div>

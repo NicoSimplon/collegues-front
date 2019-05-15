@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <form>
-        <div class="form-group">
+        <div class="form-group" (ngSubmit)="rechercher(nomSaisi.value)">
             <div class="row">
                 <div class="col-lg-4 col-sm-12">
                     <label for="recherheNom">Recherche par nom : </label>
@@ -10,7 +10,7 @@
                     <small class="form-text text-muted"><em>Les noms commencent par une majuscule</em></small>
                 </div>
                 <div class="col-lg-4 col-sm-12">
-                    <button type="button" (click)="rechercher(nomSaisi.value)" class="btn btn-primary">Rechercher</button>
+                    <button type="submit" class="btn btn-primary">Rechercher</button>
                 </div>
             </div>
         </div>
