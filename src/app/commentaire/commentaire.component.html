@@ -11,7 +11,7 @@
         <div class="alert alert-danger text-center" *ngIf="messageError">
             <p>{{ messageError }}</p>
         </div>
-        <form (ngSubmit)="submit()">
+        <form (ngSubmit)="delete()">
             <button class="btn btn-danger" type="submit">Supprimer</button>
         </form>
     </div>

@@ -20,7 +20,7 @@ export class PhotoDetailComponent implements OnInit {
 
 	constructor(private _service: DataService, private route: ActivatedRoute) { }
 
-	updateListAfterDelete(): void {
+	updateListAfterDelete(message: string): void {
 		this.updateCommentList("Le commentaire a été supprimé avec succès");		
 	}
 
@@ -34,7 +34,7 @@ export class PhotoDetailComponent implements OnInit {
 					if (error.status === 403) {
 						this.message = "Vous devez avoir des droits d'administrateur pour ajouter un commentaire";
 					} else {
-						this.message = `${error.message}`;
+						this.message = `${error.error}`;
 					}
 					setInterval(
 						() => {

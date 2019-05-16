@@ -79,7 +79,7 @@
     </form>
 </div>
 <br>
-<div class="container" *ngIf="commentaires.length > 0">
+<div class="container" *ngIf="commentaires && commentaires.length > 0">
     <h2>Commentaires précédents : </h2>
     <hr>
     <div *ngFor="let commentaire of commentaires">
